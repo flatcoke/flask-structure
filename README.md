@@ -9,7 +9,11 @@ https://www.digitalocean.com/community/tutorials/how-to-structure-large-flask-ap
 
 ```
 virtualenv env
+```
+```
 . env/bin/activate
+```
+```
 pip install -r requirements.txt
 ```
 =======
