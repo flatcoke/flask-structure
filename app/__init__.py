@@ -4,8 +4,14 @@ from flask import Flask, render_template
 # Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
 
+# ETC
+from flask_bootstrap import Bootstrap
+
 # Define the WSGI application object
 app = Flask(__name__)
+
+# Bootstap
+Bootstrap(app)
 
 # Configurations
 app.config.from_object('config')
@@ -21,10 +27,12 @@ def not_found(error):
 
 # Import a module / component using its blueprint handler variable (mod_auth)
 from app.mod_auth.controllers import mod_auth as auth_module
+from app.forc.controllers import forc as forc_module
 
 # Register blueprint(s)
-app.register_blueprint(auth_module)
 # app.register_blueprint(xyz_module)
+app.register_blueprint(auth_module)
+app.register_blueprint(forc_module)
 # ..
 
 # Build the database:
