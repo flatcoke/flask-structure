@@ -1,11 +1,9 @@
 from flask import render_template, Blueprint
-
+from app import app
 
 forc = Blueprint('forc', __name__, url_prefix='/forc')
 
 
-@forc.route('/home/', methods=['GET'])
-def test():
+@app.route('/', methods=['GET'])
+def home():
     return render_template('forc/home.html')
-
-

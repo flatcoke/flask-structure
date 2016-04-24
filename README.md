@@ -8,8 +8,8 @@
 ## To setup dev environment
 
 ```sh
-virtualenv env
-. env/bin/activate
-pip install -r requirements.txt
+$ virtualenv env
+$ . env/bin/activate
+$ pip install -r requirements.txt
 ```
 =======

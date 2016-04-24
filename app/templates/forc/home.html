@@ -1,14 +1,14 @@
 {% extends "forc/base.html" %}
 
-{% block title %}Index{% endblock %}
+{% block title %}{{ super() }}{% endblock %}
 {% block head %}
-  {{ super() }}
-  <style type="text/css">
-    .important { color: #336699; }
-  </style>
+    {{ super() }}
 {% endblock %}
 {% block content %}
-  <h1>Index</h1>
-  <p class="important">
+    <div class="container">
+    {{ super() }}
+    <h1 class="page-header">taemin</h1>
+    <p class="important">
     Welcome on my awesome homepage.
+    </div>
 {% endblock %}
