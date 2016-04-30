@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+    {% block head %}
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+        <title>{% block title %}Flacoke {% endblock %} - My Webpage</title>
+    {% endblock %}
+</head>
+<body>
+<div id="content">
+    {% block content %}
+        <!doctype html>
+        <html lang=''>
+        <head>
+            <title>CSS MenuMaker</title>
+        </head>
+        <body>
+
+        <div id='cssmenu'>
+            <ul>
+                <li class='active'><a href='#'>Home</a></li>
+                <li><a href='#'>Products</a></li>
+                <li><a href='#'>Company</a></li>
+                <li><a href='#'>Contact</a></li>
+            </ul>
+        </div>
+
+        </body>
+        <html>
+    {% endblock %}
+</div>
+{% block footer %}
+    <div id="footer" class="container">
+        &copy; Copyright 2016 by <a href="http://flatcoke.com/">you</a>.
+    </div>
+{% endblock %}
+</body>
+</html>

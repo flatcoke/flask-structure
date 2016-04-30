@@ -9,7 +9,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from app import db
 
 # Import module forms
-from app.mod_auth.forms import LoginForm
+from app.mod_auth.forms import LoginForm, SignupForm
 
 # Import module models (i.e. User)
 from app.mod_auth.models import User
@@ -34,3 +34,23 @@ def signin():
         flash('Wrong email or password', 'error-message')
 
     return render_template("auth/signin.html", form=form)
+
+
+@mod_auth.route('/signup/', methods=['GET', 'POST'])
+def signup():
+    form = SignupForm()
+
+    print request.method
+    if request.method == 'POST':
+        if form.validate() == False:
+            return render_template('/auth/signup.html', form=form)
+        else:
+            newuser = User(form.username.data, form.name.data, form.email.data, form.password.data)
+            print newuser
+            db.session.add(newuser)
+            db.session.commit()
+
+            return "sign in the user and redirect to Home"  # TODO
+
+    elif request.method == 'GET':
+        return render_template('/auth/signup.html', form=form)

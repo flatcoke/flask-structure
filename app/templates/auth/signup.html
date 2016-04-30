@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+    {{ super() }}
+  <h2>Sign up</h2>
+
+  {% for message in form.username.errors %}
+      <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.name.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.email.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.password.errors %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  {% for message in form.confirm.errors %}
+      <div class="flash">{{ message }}</div>
+  {% endfor %}
+
+  <form action="{{ url_for('auth.signup') }}" method=post>
+    {{ form.hidden_tag() }}
+
+    {{ form.username.label }}
+    {{ form.username}}
+
+    {{ form.name.label }}
+    {{ form.name}}
+
+    {{ form.email.label }}
+    {{ form.email }}
+
+    {{ form.password.label }}
+    {{ form.password }}
+
+    {{ form.confirm.label }}
+    {{ form.confirm }}
+
+    {{ form.submit.label }}
+    {{ form.submit }}
+  </form>
+
+{% endblock %}
