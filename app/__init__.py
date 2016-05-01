@@ -9,6 +9,9 @@ from flask.ext.sqlalchemy import SQLAlchemy
 # Define the WSGI application object
 app = Flask(__name__)
 
+# Turn off Flask-SQLAlchemy event system
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+
 # Configurations
 app.config.from_object('config')
 
