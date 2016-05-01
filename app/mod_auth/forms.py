@@ -22,7 +22,7 @@ class LoginForm(Form):
 
 
 class SignupForm(Form):
-    username = StringField('Username', [DataRequired("Please enter your id")])
+    username = StringField('Id', [DataRequired("Please enter your id")])
     name = StringField('Name', [DataRequired("Please enter your name")])
     email = StringField(
         'Email',
@@ -32,8 +32,8 @@ class SignupForm(Form):
         'Password',
         [DataRequired("Please enter your a password."),
          EqualTo('confirm', message="Passwords must match"), ], )
-    confirm = PasswordField('Confirm', [DataRequired("Repeat Password")])
-    submit = SubmitField("Create account")
+    confirm = PasswordField('Re-enter Password', [DataRequired("Repeat Password")])
+    submit = SubmitField("Register Now")
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
