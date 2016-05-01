@@ -20,11 +20,14 @@ app.config.from_object('config')
 db = SQLAlchemy(app)
 
 
-# Sample HTTP error handling
+# HTTP error handling
 @app.errorhandler(404)
 def not_found(error):
-    return render_template('404.html'), 404
+    return render_template('error/404.html'), 404
 
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template('error/500.html'), 500
 
 # Import a module / component using its blueprint handler variable (mod_auth)
 from app.mod_auth.controllers import mod_auth as auth_module
