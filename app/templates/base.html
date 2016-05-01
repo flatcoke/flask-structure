@@ -2,13 +2,7 @@
 <html>
 <head>
     {% block head %}
-        <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
-        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&amp;subset=latin,cyrillic"
-              rel="stylesheet">
-        <link href="http://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
-        <link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
-
+        <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&amp;subset=latin,cyrillic"
               rel="stylesheet">
         <link href="http://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
@@ -23,7 +17,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/revolution.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
         <!-- Mexico - Responsive Multipurpose Template - v.1.1-->
-        <title>{% block title %}Flacoke {% endblock %} - My Webpage</title>
+        <title>{% block title %}Flacoke {% endblock %}</title>
     {% endblock %}
 </head>
 <body>
@@ -39,8 +33,8 @@
 
                 <!-- NAVBAR BRAND -->
                 <a class="navbar-brand pull-left" href="">
-                    <img src="http://placehold.it/22x22" alt="Mexico">
-                    Mexico
+                    <img src="../../static/images/favicon.ico">
+                    Flatcoke
                 </a>
                 <!-- /.navbar-brand -->
 
