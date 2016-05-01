@@ -2,38 +2,1182 @@
 <html>
 <head>
     {% block head %}
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&amp;subset=latin,cyrillic"
+              rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&amp;subset=latin,cyrillic"
+              rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
+
+
+
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/preloader.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/animate.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/revolution.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <!-- Mexico - Responsive Multipurpose Template - v.1.1-->
         <title>{% block title %}Flacoke {% endblock %} - My Webpage</title>
     {% endblock %}
 </head>
 <body>
 <div id="content">
     {% block content %}
-        <!doctype html>
-        <html lang=''>
-        <head>
-            <title>CSS MenuMaker</title>
-        </head>
-        <body>
 
-        <div id='cssmenu'>
-            <ul>
-                <li class='active'><a href='#'>Home</a></li>
-                <li><a href='#'>Products</a></li>
-                <li><a href='#'>Company</a></li>
-                <li><a href='#'>Contact</a></li>
-            </ul>
-        </div>
 
-        </body>
-        <html>
+        <!-- HEADER -->
+        <header class="header">
+
+            <!-- NAVBAR -->
+            <nav class="navbar container">
+
+                <!-- NAVBAR BRAND -->
+                <a class="navbar-brand pull-left" href="">
+                    <img src="http://placehold.it/22x22" alt="Mexico">
+                    Mexico
+                </a>
+                <!-- /.navbar-brand -->
+
+                <!-- NAVBAR FORM -->
+                <form class="navbar-form pull-right">
+                    <div class="navbar-search collapse">
+                        <input type="text" placeholder="Type and hit enter...">
+                        <i class="fa fa-times" data-toggle="collapse" data-target=".navbar-search"></i>
+                    </div>
+                    <button type="button" class="fa fa-search" data-target=".navbar-search"
+                            data-toggle="collapse"></button>
+                </form>
+                <!-- /.navbar-form -->
+
+                <div class="divider pull-right"></div>
+
+                <button class="navbar-toggle pull-right" data-target="#navbar" data-toggle="collapse" type="button">
+                    <i class="fa fa-bars"></i>
+                </button>
+
+                <!-- NAVBAR COLLAPSE -->
+                <div id="navbar" class="navbar-collapse collapse pull-right">
+                    <ul class="nav navbar-nav">
+                        <li class="active dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Home</a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li><a href="../home/home-1.html">Home 1</a></li>
+                                <li><a href="../home/home-2.html">Home 2</a></li>
+                                <li><a href="../home/home-3.html">Home 3</a></li>
+                                <li><a href="../home/home-4.html">Home 4</a></li>
+                                <li><a href="../home/home-5.html">Home 5</a></li>
+                                <li><a href="../home/home-6.html">Home 6</a></li>
+                                <li><a href="../home/home-7.html">Home 7</a></li>
+                                <li><a href="../home/home-8.html">Home 8</a></li>
+                                <li><a href="../home/home-9.html">Home 9</a></li>
+                                <li><a href="../home/home-10.html">Home 10</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Elements</a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li class="dropdown">
+                                    <a href="">Main menu</a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li class="dropdown">
+                                            <a href="">Basic</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-basic.html">Align right</a></li>
+                                                <li><a href="../header/menu-basic-align-left.html">Align left</a></li>
+                                                <li><a href="../header/menu-basic-align-center-1.html">Center style
+                                                    1</a></li>
+                                                <li><a href="../header/menu-basic-align-center-2.html">Center style
+                                                    2</a></li>
+                                                <li><a href="../header/menu-basic-logo-img.html">Logo image</a></li>
+                                                <li><a href="../header/menu-basic-logo-text.html">Logo text</a></li>
+                                                <li><a href="../header/menu-slogan.html">Slogan menu</a></li>
+                                                <li><a href="../header/menu-transparent.html">Transparent</a></li>
+                                                <li><a href="../header/menu-nobg.html">No background</a></li>
+                                                <li><a href="../header/menu-minimal.html">Minimal</a></li>
+                                                <li><a href="../header/boxed.html">Boxed</a></li>
+                                                <li><a href="../header/menu-float.html">Float</a></li>
+                                                <li><a href="../header/menu-fullwidth.html">Fullwidth</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Extra menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-extra-top.html">Extra top</a></li>
+                                                <li><a href="../header/menu-extra-bottom.html">Extra bottom</a></li>
+                                                <li><a href="../header/menu-multirow.html">Multirow</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Languages</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-lang.html">Languages code</a></li>
+                                                <li><a href="../header/menu-lang-full.html">Languages name</a></li>
+                                                <li><a href="../header/menu-lang-flag.html">Country flag</a></li>
+                                                <li><a href="../header/menu-lang-flag-code.html">Flag and code</a></li>
+                                                <li><a href="../header/menu-lang-flag-code-full.html">Flag and name</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Ecommerce</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-ecommerce-1.html">Ecommerce 1</a></li>
+                                                <li><a href="../header/menu-ecommerce-2.html">Ecommerce 2</a></li>
+                                                <li><a href="../header/menu-ecommerce-3.html">Ecommerce 3</a></li>
+                                                <li><a href="../header/menu-ecommerce-4.html">Ecommerce 4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Account</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-account-1.html">Account 1</a></li>
+                                                <li><a href="../header/menu-account-2.html">Account 2</a></li>
+                                                <li><a href="../header/menu-account-3.html">Account 3</a></li>
+                                                <li><a href="../header/menu-account-login-1.html">Login account 1</a>
+                                                </li>
+                                                <li><a href="../header/menu-account-login-2.html">Login account 2</a>
+                                                </li>
+                                                <li><a href="../header/menu-account-login-3.html">Login account 3</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Sticky menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-sticky.html">Sticky menu</a></li>
+                                                <li><a href="../header/menu-sticky-corner.html">Sticky with corner</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Sidebar menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-sidebar-right.html">Right sidebar menu</a>
+                                                </li>
+                                                <li><a href="../header/menu-sidebar-left.html">Left sidebar menu</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Left menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-left.html">Left menu</a></li>
+                                                <li><a href="../header/menu-left-fullwidth.html">Fullwidth left</a></li>
+                                                <li><a href="../header/menu-left-fullwidth-hover-collapse.html">Fullwidth
+                                                    hover</a></li>
+                                                <li><a href="../header/menu-left-hover.html">Hover left menu</a></li>
+                                                <li><a href="../header/menu-left-move-collapse.html">Move content</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Right menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-right.html">Right menu</a></li>
+                                                <li><a href="../header/menu-right-fullwidth.html">Fullwidth right</a>
+                                                </li>
+                                                <li><a href="../header/menu-right-fullwidth.html">Fullwidth hover</a>
+                                                </li>
+                                                <li><a href="../header/menu-right-hover.html">Hover right menu</a></li>
+                                                <li><a href="../header/menu-right-move-collapse.html">Move content</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Bottom menu</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-bottom-fixed.html">Fixed</a></li>
+                                                <li><a href="../header/menu-bottom-fixed-float.html">Fixed float</a>
+                                                </li>
+                                                <li><a href="../header/menu-bottom-sticky.html">Sticky</a></li>
+                                                <li><a href="../header/menu-bottom-sticky-float.html">Sticky float</a>
+                                                </li>
+                                                <li><a href="../header/menu-bottom-sticky-hidden.html">Sticky hidden</a>
+                                                </li>
+                                                <li><a href="../header/menu-bottom-hidden-fixed.html">Hidden fixed</a>
+                                                </li>
+                                                <li><a href="../header/menu-bottom-hidden-scroll.html">Hidden scroll</a>
+                                                </li>
+                                                <li><a href="../header/menu-bottom-hidden-sticky.html">Hidden sticky</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Light style</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../header/menu-bottom-fixed-light.html">Fixed Bottom</a>
+                                                </li>
+                                                <li><a href="../header/menu-account-1-light.html">Account</a></li>
+                                                <li><a href="../header/menu-ecommerce-3-light.html">Ecommerce</a></li>
+                                                <li><a href="../header/menu-extra-top-light.html">Extra top</a></li>
+                                                <li><a href="../header/menu-extra-bottom-light.html">Extra bottom</a>
+                                                </li>
+                                                <li><a href="../header/menu-lang-light.html">Languages</a></li>
+                                                <li><a href="../header/menu-minimal-light.html">Minimal</a></li>
+                                                <li><a href="../header/menu-sidebar-right-light.html">Right sidebar</a>
+                                                </li>
+                                                <li><a href="../header/menu-bottom-fixed-float-light.html">Bottom fixed
+                                                    float</a></li>
+                                                <li><a href="../header/menu-slogan-light.html">Slogan</a></li>
+                                                <li><a href="../header/menu-transparent-light.html">Transparent</a></li>
+                                                <li><a href="../header/menu-left-light.html">Left menu</a></li>
+                                                <li><a href="../header/menu-multirow-light.html">Multirow</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Page titles</a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li class="dropdown">
+                                            <a href="">Basic</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../titles/title-basic.html">Basic style</a></li>
+                                                <li><a href="../titles/title-icon-1.html">Icon style 1</a></li>
+                                                <li><a href="../titles/title-icon-2.html">Icon style 2</a></li>
+                                                <li><a href="../titles/title-simple-1.html">Simple 1</a></li>
+                                                <li><a href="../titles/title-simple-2.html">Simple 2</a></li>
+                                                <li><a href="../titles/title-subtitle-1.html">Subtitle 1</a></li>
+                                                <li><a href="../titles/title-subtitle-1.html">Subtitle 2</a></li>
+                                                <li><a href="../titles/title-2-level.html">Second level</a></li>
+                                                <li><a href="../titles/title-collapse.html">Collapse</a></li>
+                                                <li><a href="../titles/title-collapse-dark.html">Dark style</a></li>
+                                                <li><a href="../titles/title-next.html">Next buttons</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Background</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../titles/title-pattern.html">Pattern</a></li>
+                                                <li><a href="../titles/title-white-line.html">Border bottom</a></li>
+                                                <li><a href="../titles/title-image.html">Image</a></li>
+                                                <li><a href="../titles/title-image-parallax.html">Image parallax</a>
+                                                </li>
+                                                <li><a href="../titles/title-nobg.html">No background</a></li>
+                                                <li><a href="../titles/title-transparent.html">Transparent</a></li>
+                                                <li><a href="../titles/title-video.html">Video</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Align</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../titles/title-align-right.html">Right align</a></li>
+                                                <li><a href="../titles/title-collapse.html">Left align</a></li>
+                                                <li><a href="../titles/title-align-center-1.html">Center align 1</a>
+                                                </li>
+                                                <li><a href="../titles/title-align-center-2.html">Center align 2</a>
+                                                </li>
+                                                <li><a href="../titles/title-align-center-3.html">Center align 3</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Size</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../titles/title-small.html">Small</a></li>
+                                                <li><a href="../titles/title-medium.html">Medium</a></li>
+                                                <li><a href="../titles/title-large.html">Large</a></li>
+                                                <li><a href="../titles/title-large-extra.html">Extra large</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Widgets</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../widgets/widgets-sidebar-left.html">Left sidebar</a></li>
+                                        <li><a href="../widgets/widgets-sidebar-right.html">Right sidebar</a></li>
+                                        <li><a href="../widgets/widgets-sidebar-both.html">Both sidebars</a></li>
+                                        <li><a href="../widgets/widgets-corner-fix.html">Corner fix</a></li>
+                                        <li><a href="../widgets/widgets-corner-slide.html">Corner slide</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Footer</a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li><a href="../footer/footer-classic.html">Classic</a></li>
+                                        <li class="dropdown">
+                                            <a href="">Blog</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../footer/footer-blog-1.html">Blog style 1</a></li>
+                                                <li><a href="../footer/footer-blog-2.html">Blog style 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Agency</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../footer/footer-agency-1.html">Agency style 1</a></li>
+                                                <li><a href="../footer/footer-agency-2.html">Agency style 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Personal</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../footer/footer-personal-1.html">Personal style 1</a></li>
+                                                <li><a href="../footer/footer-personal-2.html">Personal style 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Ecommerce</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../footer/footer-ecommerce-1.html">Ecommerce style 1</a>
+                                                </li>
+                                                <li><a href="../footer/footer-ecommerce-2.html">Ecommerce style 2</a>
+                                                </li>
+                                                <li><a href="../footer/footer-ecommerce-3.html">Ecommerce style 3</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="../footer/footer-multipurpose.html">Multipurpose</a></li>
+                                        <li><a href="../footer/footer-multirow.html">Multirow</a></li>
+                                        <li class="dropdown">
+                                            <a href="">Minimal</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../footer/footer-minimal-1.html">Minimal style 1</a></li>
+                                                <li><a href="../footer/footer-minimal-2.html">Minimal style 2</a></li>
+                                                <li><a href="../footer/footer-minimal-3.html">Minimal style 3</a></li>
+                                                <li><a href="../footer/footer-minimal-4.html">Minimal style 4</a></li>
+                                                <li><a href="../footer/footer-minimal-5.html">Minimal style 5</a></li>
+                                                <li><a href="../footer/footer-minimal-6.html">Minimal style 6</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="../footer/footer-all-dark.html">All dark footers</a></li>
+                                        <li><a href="../footer/footer-all-light.html">All light footers</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Sections</a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li class="dropdown">
+                                            <a href="">Text and icons</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-text-icons-1.html">Style 1</a></li>
+                                                <li><a href="../elements/elements-text-icons-2.html">Style 2</a></li>
+                                                <li><a href="../elements/elements-text-icons-3.html">Style 3</a></li>
+                                                <li><a href="../elements/elements-text-icons-4.html">Style 4</a></li>
+                                                <li><a href="../elements/elements-text-icons-5.html">Style 5</a></li>
+                                                <li><a href="../elements/elements-text-icons-6.html">Style 6</a></li>
+                                                <li><a href="../elements/elements-text-icons-7.html">Style 7</a></li>
+                                                <li><a href="../elements/elements-text-icons-8.html">Style 8</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Text and images</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-text-images-1.html">Style 1</a></li>
+                                                <li><a href="../elements/elements-text-images-2.html">Style 2</a></li>
+                                                <li><a href="../elements/elements-text-images-3.html">Style 3</a></li>
+                                                <li><a href="../elements/elements-text-images-4.html">Style 4</a></li>
+                                                <li><a href="../elements/elements-text-images-5.html">Style 5</a></li>
+                                                <li><a href="../elements/elements-text-images-6.html">Style 6</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="../elements/elements-service-cards.html">Service cards</a></li>
+                                        <li><a href="../elements/elements-client-logos.html">Client logos</a></li>
+                                        <li><a href="../elements/elements-process-steps.html">Process steps</a></li>
+                                        <li><a href="../elements/elements-google-maps.html">Google Maps</a></li>
+                                        <li><a href="../elements/elements-counters.html">Counters</a></li>
+                                        <li><a href="../elements/elements-pie-charts.html">Pie charts</a></li>
+                                        <li><a href="../elements/elements-vertical-charts.html">Vertical cahrts</a></li>
+                                        <li><a href="../elements/elements-horizontal-charts.html">Horizontal charts</a>
+                                        </li>
+                                        <li><a href="../elements/elements-promo-boxes.html">Promo boxes</a></li>
+                                        <li><a href="../elements/elements-testimonials.html">Testimonials</a></li>
+                                        <li><a href="../elements/elements-pricing.html">Pricing</a></li>
+                                        <li class="dropdown">
+                                            <a href="">Team</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-team-1.html">Style 1</a></li>
+                                                <li><a href="../elements/elements-team-2.html">Style 2</a></li>
+                                                <li><a href="../elements/elements-team-3.html">Style 3</a></li>
+                                                <li><a href="../elements/elements-team-4.html">Style 4</a></li>
+                                                <li><a href="../elements/elements-team-5.html">Style 5</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="../elements/elements-about-me.html">About Me</a></li>
+                                        <li><a href="../elements/elements-blog-previews.html">Blog previews</a></li>
+                                        <li><a href="../elements/elements-timeline.html">Timeline</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Galleries</a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li class="dropdown">
+                                            <a href="">Grid</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-gallery-grid-1-col.html">1 column</a>
+                                                </li>
+                                                <li><a href="../elements/elements-gallery-grid-2-col.html">2 columns</a>
+                                                </li>
+                                                <li><a href="../elements/elements-gallery-grid-2-col-margin.html">2
+                                                    columns margin</a></li>
+                                                <li><a href="../elements/elements-gallery-grid-3-col.html">3 columns</a>
+                                                </li>
+                                                <li><a href="../elements/elements-gallery-grid-3-col-margin.html">3
+                                                    columns margin</a></li>
+                                                <li><a href="../elements/elements-gallery-grid-4-col.html">4 columns</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Grid fullwidth</a>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a href="../elements/elements-gallery-grid-fullwidth-lg.html">Large</a>
+                                                </li>
+                                                <li>
+                                                    <a href="../elements/elements-gallery-grid-fullwidth-md.html">Medium</a>
+                                                </li>
+                                                <li>
+                                                    <a href="../elements/elements-gallery-grid-fullwidth-sm.html">Small</a>
+                                                </li>
+                                                <li><a href="../elements/elements-gallery-grid-fullwidth-mixed.html">Mixed</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="../elements/elements-gallery-grid-mixed.html">Grid mixed</a></li>
+                                        <li><a href="../elements/elements-gallery-grid-mixed-margin.html">Grid mixed
+                                            margin</a></li>
+                                        <li class="dropdown">
+                                            <a href="">Masonry</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-gallery-masonry-2-col.html">2
+                                                    columns</a></li>
+                                                <li><a href="../elements/elements-gallery-masonry-2-col-margin.html">2
+                                                    columns margin</a></li>
+                                                <li><a href="../elements/elements-gallery-masonry-3-col.html">3
+                                                    columns</a></li>
+                                                <li><a href="../elements/elements-gallery-masonry-3-col-margin.html">3
+                                                    columns margin</a></li>
+                                                <li><a href="../elements/elements-gallery-masonry-4-col.html">4
+                                                    columns</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="../elements/elements-gallery-masonry-fullwidth.html">Masonry
+                                            fullwidth</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Carousels</a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li class="dropdown">
+                                            <a href="">Columns</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-carousels-2-col.html">2 columns</a>
+                                                </li>
+                                                <li><a href="../elements/elements-carousels-3-col.html">3 columns</a>
+                                                </li>
+                                                <li><a href="../elements/elements-carousels-4-col.html">4 columns</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="../elements/elements-carousels-arrows.html">Arrows style</a></li>
+                                        <li class="dropdown">
+                                            <a href="">Text and icons</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-carousels-text-icons-1.html">Style
+                                                    1</a></li>
+                                                <li><a href="../elements/elements-carousels-text-icons-2.html">Style
+                                                    2</a></li>
+                                                <li><a href="../elements/elements-carousels-text-icons-3.html">Style
+                                                    3</a></li>
+                                                <li><a href="../elements/elements-carousels-text-icons-4.html">Style
+                                                    4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Text and images</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-carousels-text-images-1.html">Style
+                                                    1</a></li>
+                                                <li><a href="../elements/elements-carousels-text-images-2.html">Style
+                                                    2</a></li>
+                                                <li><a href="../elements/elements-carousels-text-images-3.html">Style
+                                                    3</a></li>
+                                                <li><a href="../elements/elements-carousels-text-images-4.html">Style
+                                                    4</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Team</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../elements/elements-carousels-team-1.html">Style 1</a>
+                                                </li>
+                                                <li><a href="../elements/elements-carousels-team-2.html">Style 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="../elements/elements-carousels-blog-previews.html">Blog
+                                            previews</a></li>
+                                        <li><a href="../elements/elements-carousels-client-logos.html">Client logos</a>
+                                        </li>
+                                        <li><a href="../elements/elements-carousels-process-steps.html">Process
+                                            steps</a></li>
+                                        <li><a href="../elements/elements-carousels-service-cards.html">Service
+                                            cards</a></li>
+                                        <li><a href="../elements/elements-carousels-testimonials.html">Testimonials</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Sliders</a>
+                                    <ul class="dropdown-menu sub-menu">
+                                        <li class="dropdown">
+                                            <a href="">Fullwidth background</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-fullwidth.html">Images</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-solid.html">Solid color</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullwidth-videobg.html">HTML5 video</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullwidth-videovim.html">Vimeo video</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullwidth-videoyt.html">Youtube video</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullwidth-mixed.html">Mixed</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-light.html">Light</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-light-dotted.html">Light
+                                                    Pattern</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Fullscreen background</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-fullscreen.html">Images</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-solid.html">Solid color</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullscreen-videobg.html">HTML5 video</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullscreen-videovim.html">Vimeo video</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullscreen-videoyt.html">Youtube
+                                                    video</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-mixed.html">Mixed</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-light.html">Light</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-light-dotted.html">Light
+                                                    Pattern</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Boxed background</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-boxed.html">Images</a></li>
+                                                <li><a href="../sliders/slider-boxed-solid.html">Solid color</a></li>
+                                                <li><a href="../sliders/slider-boxed-videobg.html">HTML5 video</a></li>
+                                                <li><a href="../sliders/slider-boxed-videovim.html">Vimeo video</a></li>
+                                                <li><a href="../sliders/slider-boxed-videoyt.html">Youtube video</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-boxed-mixed.html">Mixed</a></li>
+                                                <li><a href="../sliders/slider-boxed-light.html">Light</a></li>
+                                                <li><a href="../sliders/slider-boxed-light-dotted.html">Light
+                                                    Pattern</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Fullwidth arrows</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-fullwidth-arrows-images.html">Images</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullwidth-arrows-left.html">Bottom
+                                                    left</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-arrows-right.html">Bottom
+                                                    right</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-arrows-text.html">Text</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-arrows-text-images.html">Text
+                                                    and images</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-image-nav.html">Image
+                                                    navigation</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Fullscreen arrows</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-fullscreen-arrows-images.html">Images</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullscreen-arrows-left.html">Bottom
+                                                    left</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-arrows-right.html">Bottom
+                                                    right</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-arrows-text.html">Text</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-fullscreen-arrows-text-images.html">Text
+                                                    and images</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-image-nav.html">Image
+                                                    navigation</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Boxed arrows</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-boxed-arrows-images.html">Images</a></li>
+                                                <li><a href="../sliders/slider-boxed-arrows-left.html">Bottom left</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-boxed-arrows-right.html">Bottom right</a>
+                                                </li>
+                                                <li><a href="../sliders/slider-boxed-arrows-text.html">Text</a></li>
+                                                <li><a href="../sliders/slider-boxed-arrows-text-images.html">Text and
+                                                    images</a></li>
+                                                <li><a href="../sliders/slider-boxed-image-nav.html">Image
+                                                    navigation</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Fullwidth various</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-fullwidth-parallax-scene.html">Parallax
+                                                    scene</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-parallax-scroll.html">Parallax
+                                                    scroll</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-tabs.html">Tabs</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-tabs-transparent.html">Tabs
+                                                    transparent</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-scrolldown.html">Scrolldown</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Fullscreen various</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-fullscreen-parallax-scene.html">Parallax
+                                                    scene</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-parallax-scroll.html">Parallax
+                                                    scroll</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-tabs.html">Tabs</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-tabs-transparent.html">Tabs
+                                                    transparent</a></li>
+                                                <li>
+                                                    <a href="../sliders/slider-fullscreen-scrolldown.html">Scrolldown</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Boxed various</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-boxed-parallax-scene.html">Parallax
+                                                    scene</a></li>
+                                                <li><a href="../sliders/slider-boxed-parallax-scroll.html">Parallax
+                                                    scroll</a></li>
+                                                <li><a href="../sliders/slider-boxed-tabs.html">Tabs</a></li>
+                                                <li><a href="../sliders/slider-boxed-tabs-transparent.html">Tabs
+                                                    transparent</a></li>
+                                                <li><a href="../sliders/slider-boxed-scrolldown.html">Scrolldown</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Vertical</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../sliders/slider-fullwidth-vertical-arrows-center.html">Fullwidth
+                                                    center</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-vertical-arrows-right.html">Fullwidth
+                                                    right</a></li>
+                                                <li><a href="../sliders/slider-fullwidth-vertical-arrows-left.html">Fullwidth
+                                                    left</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-vertical-arrows-center.html">Fullscreen
+                                                    center</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-vertical-arrows-right.html">Fullscreen
+                                                    right</a></li>
+                                                <li><a href="../sliders/slider-fullscreen-vertical-arrows-left.html">Fullscreen
+                                                    left</a></li>
+                                                <li><a href="../sliders/slider-boxed-vertical-arrows-center.html">Boxed
+                                                    center</a></li>
+                                                <li><a href="../sliders/slider-boxed-vertical-arrows-right.html">Boxed
+                                                    right</a></li>
+                                                <li><a href="../sliders/slider-boxed-vertical-arrows-left.html">Boxed
+                                                    left</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li class="dropdown">
+                                    <a href="">About Us</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/about-1.html">Style 1</a></li>
+                                        <li><a href="../pages/about-2.html">Style 2</a></li>
+                                        <li><a href="../pages/about-3.html">Style 3</a></li>
+                                        <li><a href="../pages/about-me-1.html">About Me 1</a></li>
+                                        <li><a href="../pages/about-me-2.html">About Me 2</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Services</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/services-1.html">Style 1</a></li>
+                                        <li><a href="../pages/services-2.html">Style 2</a></li>
+                                        <li><a href="../pages/services-3.html">Style 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Our Team</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/team-1.html">Style 1</a></li>
+                                        <li><a href="../pages/team-2.html">Style 2</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Clients</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/clients-1.html">Style 1</a></li>
+                                        <li><a href="../pages/clients-2.html">Style 2</a></li>
+                                        <li><a href="../pages/clients-3.html">Style 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Testimonials</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/testimonials-1.html">Style 1</a></li>
+                                        <li><a href="../pages/testimonials-2.html">Style 2</a></li>
+                                        <li><a href="../pages/testimonials-3.html">Style 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Pricing</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/pricing-1.html">Style 1</a></li>
+                                        <li><a href="../pages/pricing-2.html">Style 2</a></li>
+                                        <li><a href="../pages/pricing-3.html">Style 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Contact</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/contact-1.html">Style 1</a></li>
+                                        <li><a href="../pages/contact-2.html">Style 2</a></li>
+                                        <li><a href="../pages/contact-3.html">Style 3</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">FAQ</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/faq-no-collapse-1-col.html">1 column</a></li>
+                                        <li><a href="../pages/faq-no-collapse-2-col.html">2 columns</a></li>
+                                        <li><a href="../pages/faq-no-collapse-3-col.html">3 columns</a></li>
+                                        <li><a href="../pages/faq-collapse-1-col.html">1 column collapse</a></li>
+                                        <li><a href="../pages/faq-collapse-2-col.html">2 columns collapse</a></li>
+                                        <li><a href="../pages/faq-collapse-3-col.html">3 columns collapse</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="../pages/gallery.html">Gallery</a></li>
+                                <li><a href="../pages/timeline.html">Timeline</a></li>
+                                <li><a href="../pages/careers.html">Careers</a></li>
+                                <li><a href="../pages/vacancy.html">Vacancy</a></li>
+                                <li class="dropdown">
+                                    <a href="">Search results</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/search-results-1.html">Style 1</a></li>
+                                        <li><a href="../pages/search-results-2.html">Style 2</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Text Page</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/text-no-sidebars.html">No sidebars</a></li>
+                                        <li><a href="../pages/text-fullwidth-no-sidebars.html">Fullwidth</a></li>
+                                        <li><a href="../pages/text-right-sidebar.html">Right sidebar</a></li>
+                                        <li><a href="../pages/text-left-sidebar.html">Left sidebar</a></li>
+                                        <li><a href="../pages/text-both-right-sidebars.html">Both right sidebars</a>
+                                        </li>
+                                        <li><a href="../pages/text-both-left-sidebars.html">Both left sidebars</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Blank Page</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/blank-no-sidebars.html">No sidebars</a></li>
+                                        <li><a href="../pages/blank-fullwidth-no-sidebars.html">Fullwidth</a></li>
+                                        <li><a href="../pages/blank-right-sidebar.html">Right sidebar</a></li>
+                                        <li><a href="../pages/blank-left-sidebar.html">Left sidebar</a></li>
+                                        <li><a href="../pages/blank-both-right-sidebars.html">Both right sidebars</a>
+                                        </li>
+                                        <li><a href="../pages/blank-both-left-sidebars.html">Both left sidebars</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Error</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/404.html">404</a></li>
+                                        <li><a href="../pages/500.html">500</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Maintenance Page</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="../pages/maintenance-blank.html">Blank</a></li>
+                                        <li><a href="../pages/maintenance-image-light.html">Image light</a></li>
+                                        <li><a href="../pages/maintenance-image-dark.html">Image dark</a></li>
+                                        <li><a href="../pages/maintenance-video.html">Video</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="">Account</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="dropdown">
+                                            <a href="">Account pages</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../pages/form-login.html">Login</a></li>
+                                                <li><a href="../pages/form-register.html">Register</a></li>
+                                                <li><a href="../pages/form-lost-password.html">Forgot password</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="">Modal windows</a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="../pages/form-login-modal.html">Login</a></li>
+                                                <li><a href="../pages/form-register-modal.html">Register</a></li>
+                                                <li><a href="../pages/form-lost-password-modal.html">Forgot password</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="../pages/sitemap.html">Sitemap</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-static">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Works</a>
+                            <div class="sf-mega container dropdown-menu">
+                                <div class="divtable">
+                                    <div class="divcell col-sm-3">
+                                        <h6>Grid</h6>
+                                        <ul>
+                                            <li><a href="../portfolio/portfolio-grid-1-col.html">1 column style</a></li>
+                                            <li><a href="../portfolio/portfolio-grid-2-col.html">2 columns style</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-grid-3-col.html">3 columns style</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-grid-4-col.html">4 columns style</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-single-grid-md.html">Single Medium</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-single-grid-lg.html">Single Large</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-single-grid-md-fullwidth.html">Single
+                                                Medium Fullwidth</a></li>
+                                            <li><a href="../portfolio/portfolio-single-grid-lg-fullwidth.html">Single
+                                                Large Fullwidth</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Fullwidth</h6>
+                                        <ul>
+                                            <li><a href="../portfolio/portfolio-grid-fullwidth-lg.html">Large size</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-grid-fullwidth-md.html">Medium size</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-grid-fullwidth-sm.html">Small size</a>
+                                            </li>
+                                        </ul>
+                                        <h6>Mixed</h6>
+                                        <ul>
+                                            <li><a href="../portfolio/portfolio-grid-mixed-3-col.html">3 columns
+                                                style</a></li>
+                                            <li><a href="../portfolio/portfolio-grid-mixed-4-col.html">4 columns
+                                                style</a></li>
+                                        </ul>
+                                        <h6>Single Carousel</h6>
+                                        <ul>
+                                            <li><a href="../portfolio/portfolio-single-carousel-md.html">Single Carousel
+                                                Medium</a></li>
+                                            <li><a href="../portfolio/portfolio-single-carousel-md-fullwidth.html">Single
+                                                Carousel Medium Fullwidth</a></li>
+                                            <li><a href="../portfolio/portfolio-single-carousel-lg.html"><i
+                                                    class="fa fa-arrows-h pull-left"></i>Single Carousel Large</a></li>
+                                            <li><a href="../portfolio/portfolio-single-carousel-lg-fullwidth.html"><i
+                                                    class="fa fa-expand pull-left"></i>Single Carousel Large
+                                                Fullwidth</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Masonry</h6>
+                                        <ul>
+                                            <li><a href="../portfolio/portfolio-msnr-2-col.html">2 columns style</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-msnr-3-col.html">3 columns style</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-msnr-4-col.html">4 columns style</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-single-masonry-mixed.html">Single
+                                                Mixed</a></li>
+                                        </ul>
+                                        <h6>Single Slider</h6>
+                                        <ul>
+                                            <li><a href="../portfolio/portfolio-single-slider.html"><i
+                                                    class="fa fa-sliders pull-left"></i>Single Slider</a></li>
+                                            <li><a href="../portfolio/portfolio-single-slider-fullwidth.html"><i
+                                                    class="fa fa-arrows-alt pull-left"></i>Single Fullwidth</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Masonry fullwidth</h6>
+                                        <ul>
+                                            <li><a href="../portfolio/portfolio-msnr-fullwidth-lg.html">Large size</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-msnr-fullwidth-md.html">Medium size</a>
+                                            </li>
+                                            <li><a href="../portfolio/portfolio-msnr-fullwidth-sm.html">Small size</a>
+                                            </li>
+                                        </ul>
+                                        <h6>Single Video</h6>
+                                        <ul>
+                                            <li><a href="../portfolio/portfolio-single-video-youtube.html"><i
+                                                    class="fa fa-youtube-play pull-left"></i>Youtube</a></li>
+                                            <li><a href="../portfolio/portfolio-single-video-vimeo.html"><i
+                                                    class="fa fa-vimeo-square pull-left"></i>Vimeo</a></li>
+                                            <li><a href="../portfolio/portfolio-single-video-html5.html"><i
+                                                    class="fa fa-html5 pull-left"></i>HTML5</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown dropdown-static">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Blog</a>
+                            <div class="sf-mega container dropdown-menu">
+                                <div class="divtable">
+                                    <div class="divcell col-sm-3">
+                                        <h6>Home Classic</h6>
+                                        <ul>
+                                            <li><a href="../blog/blog-start-classic.html">No sidebar</a></li>
+                                            <li><a href="../blog/blog-start-classic-sidebar-right.html">Right
+                                                sidebar</a></li>
+                                            <li><a href="../blog/blog-start-classic-sidebar-left.html">Left sidebar</a>
+                                            </li>
+                                            <li><a href="../blog/blog-start-classic-sidebar-fix.html">Fix sidebar</a>
+                                            </li>
+                                            <li><a href="../blog/blog-start-simple.html">Simple</a></li>
+                                            <li><a href="../blog/blog-start-timeline.html">Timeline</a></li>
+                                            <li><a href="../blog/blog-start-classic-avatar.html">Author avatar</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Home Grid</h6>
+                                        <ul>
+                                            <li><a href="../blog/blog-start-grid-2-col.html">2 columns</a></li>
+                                            <li><a href="../blog/blog-start-grid-3-col.html">3 columns</a></li>
+                                            <li><a href="../blog/blog-start-grid-4-col.html">4 columns</a></li>
+                                        </ul>
+                                        <h6>Home Grid Fullwidth</h6>
+                                        <ul>
+                                            <li><a href="../blog/blog-start-grid-fullwidth-3-col.html">3 columns</a>
+                                            </li>
+                                            <li><a href="../blog/blog-start-grid-fullwidth-4-col.html">4 columns</a>
+                                            </li>
+                                        </ul>
+                                        <h6>Comments</h6>
+                                        <ul>
+                                            <li><a href="../blog/blog-post-gallery-facebook.html"><i
+                                                    class="fa fa-facebook pull-left"></i>Facebook</a></li>
+                                            <li><a href="../blog/blog-post-gallery-disqus.html"><i
+                                                    class="fa fa-comment pull-left"></i>Disqus</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Home Masonry</h6>
+                                        <ul>
+                                            <li><a href="../blog/blog-start-masonry-2-col.html">3 columns</a></li>
+                                            <li><a href="../blog/blog-start-masonry-3-col.html">3 columns</a></li>
+                                            <li><a href="../blog/blog-start-masonry-4-col.html">4 columns</a></li>
+                                            <li><a href="../blog/blog-start-masonry-fullwidth-3-col.html">Fullwidth 3
+                                                columns</a></li>
+                                            <li><a href="../blog/blog-start-masonry-fullwidth-4-col.html">Fullwidth 4
+                                                columns</a></li>
+                                        </ul>
+                                        <h6>Loading style</h6>
+                                        <ul>
+                                            <li><a href="../blog/blog-start-masonry-3-col-fade.html">Auto scroll</a>
+                                            </li>
+                                            <li><a href="../blog/blog-start-masonry-3-col-loadmore.html">Load more
+                                                button</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Single post</h6>
+                                        <ul>
+                                            <li><a href="../blog/blog-post-gallery-no-sidebar.html">No sidebar</a></li>
+                                            <li><a href="../blog/blog-post-gallery-sidebar-right.html">Right sidebar</a>
+                                            </li>
+                                            <li><a href="../blog/blog-post-gallery-sidebar-left.html">Left sidebar</a>
+                                            </li>
+                                            <li><a href="../blog/blog-post-gallery-sidebar-fix.html">Fix sidebar</a>
+                                            </li>
+                                            <li><a href="../blog/blog-post-text-avatar.html">Author avatar</a></li>
+                                            <li><a href="../blog/blog-post-text.html">Text</a></li>
+                                            <li><a href="../blog/blog-post-image.html"><i
+                                                    class="fa fa-image pull-left"></i>Image</a></li>
+                                            <li><a href="../blog/blog-post-quote.html"><i
+                                                    class="fa fa-quote-left pull-left"></i>Quote</a></li>
+                                            <li><a href="../blog/blog-post-link.html"><i
+                                                    class="fa fa-link pull-left"></i>Link</a></li>
+                                            <li><a href="../blog/blog-post-audio.html"><i
+                                                    class="fa fa-play pull-left"></i>Audio</a></li>
+                                            <li><a href="../blog/blog-post-video-youtube.html"><i
+                                                    class="fa fa-youtube-play pull-left"></i>Youtube</a></li>
+                                            <li><a href="../blog/blog-post-video-vimeo.html"><i
+                                                    class="fa fa-vimeo pull-left"></i>Vimeo</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown dropdown-static">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Shop</a>
+                            <div class="sf-mega container dropdown-menu">
+                                <div class="divtable">
+                                    <div class="divcell col-sm-3">
+                                        <h6>Catalog Grid</h6>
+                                        <ul>
+                                            <li><a href="../shop/shop-catalog-grid.html">No sidebar</a></li>
+                                            <li><a href="../shop/shop-catalog-grid-sidebar-right.html">Right sidebar</a>
+                                            </li>
+                                            <li><a href="../shop/shop-catalog-grid-sidebar-left.html">Left sidebar</a>
+                                            </li>
+                                            <li><a href="../shop/shop-catalog-grid-sidebar-fix.html">Fix sidebar</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Catalog List</h6>
+                                        <ul>
+                                            <li><a href="../shop/shop-catalog-list.html">No sidebar</a></li>
+                                            <li><a href="../shop/shop-catalog-list-sidebar-right.html">Right sidebar</a>
+                                            </li>
+                                            <li><a href="../shop/shop-catalog-list-sidebar-left.html">Left sidebar</a>
+                                            </li>
+                                            <li><a href="../shop/shop-catalog-list-sidebar-fix.html">Fix sidebar</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Product Page Type</h6>
+                                        <ul>
+                                            <li><a href="../shop/shop-product-classic.html"><i
+                                                    class="fa fa-gift pull-left"></i>Classic</a></li>
+                                            <li><a href="../shop/shop-product-downloadable.html"><i
+                                                    class="fa fa-download pull-left"></i>Downloadable</a></li>
+                                            <li><a href="../shop/shop-product-variations.html"><i
+                                                    class="fa fa-table pull-left"></i>Variations</a></li>
+                                        </ul>
+                                        <h6>Product Page</h6>
+                                        <ul>
+                                            <li><a href="../shop/shop-product-classic.html">No sidebar</a></li>
+                                            <li><a href="../shop/shop-product-classic-sidebar-right.html">Right
+                                                sidebar</a></li>
+                                            <li><a href="../shop/shop-product-classic-sidebar-left.html">Left
+                                                sidebar</a></li>
+                                            <li><a href="../shop/shop-product-classic-sidebar-fix.html">Fix sidebar</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <h6>Account</h6>
+                                        <ul>
+                                            <li><a href="../shop/shop-cart.html"><i
+                                                    class="fa fa-shopping-cart pull-left"></i>Shopping cart</a></li>
+                                            <li><a href="../shop/shop-cart-empty.html">Shopping cart empty</a></li>
+                                            <li><a href="../shop/shop-checkout.html">Checkout</a></li>
+                                            <li><a href="../shop/shop-confirmation.html">Confirmation</a></li>
+                                            <li><a href="../shop/shop-account.html"><i class="fa fa-user pull-left"></i>My
+                                                account</a></li>
+                                            <li><a href="../shop/shop-order-list.html"><i
+                                                    class="fa fa-th-list pull-left"></i>Order list</a></li>
+                                            <li><a href="../shop/shop-billing-address.html">Edit billing address</a>
+                                            </li>
+                                            <li><a href="../shop/shop-shipping-address.html">Edit shipping address</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="dropdown dropdown-static">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown">Shortcodes</a>
+                            <div class="sf-mega container dropdown-menu">
+                                <div class="divtable">
+                                    <div class="divcell col-sm-3">
+                                        <ul>
+                                            <li><a href="../shortcodes/shortcode-columns.html">Columns</a></li>
+                                            <li><a href="../shortcodes/shortcode-headings.html">Headings</a></li>
+                                            <li><a href="../shortcodes/shortcode-dropcaps.html">Dropcaps</a></li>
+                                            <li><a href="../shortcodes/shortcode-text-highlights.html">Highlighting</a>
+                                            </li>
+                                            <li><a href="../shortcodes/shortcode-google-fonts.html"><i
+                                                    class="fa fa-google pull-left"></i>Google Fonts</a></li>
+                                            <li><a href="../shortcodes/shortcode-dividers.html">Dividers</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <ul>
+                                            <li><a href="../shortcodes/shortcode-icons.html">Icons</a></li>
+                                            <li><a href="../shortcodes/shortcode-icons-fontawesome.html">FontAwesome
+                                                Icons</a></li>
+                                            <li><a href="../shortcodes/shortcode-blockquotes.html"><i
+                                                    class="fa fa-quote-left pull-left"></i>Blockquotes</a></li>
+                                            <li><a href="../shortcodes/shortcode-lists.html"><i
+                                                    class="fa fa-list pull-left"></i>Lists</a></li>
+                                            <li><a href="../shortcodes/shortcode-tabs.html">Tabs</a></li>
+                                            <li><a href="../shortcodes/shortcode-accordions.html">Accordions &amp;
+                                                Toggles</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <ul>
+                                            <li><a href="../shortcodes/shortcode-buttons.html">Buttons</a></li>
+                                            <li><a href="../shortcodes/shortcode-tables.html"><i
+                                                    class="fa fa-table pull-left"></i>Tables</a></li>
+                                            <li><a href="../shortcodes/shortcode-tooltips.html">Tooltips</a></li>
+                                            <li><a href="../shortcodes/shortcode-form-controls.html">Forms and
+                                                Controls</a></li>
+                                            <li><a href="../shortcodes/shortcode-alerts.html">Alerts</a></li>
+                                            <li><a href="../shortcodes/shortcode-media-audio.html"><i
+                                                    class="fa fa-play pull-left"></i>Audio</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="divcell col-sm-3">
+                                        <ul>
+                                            <li><a href="../shortcodes/shortcode-media-video.html"><i
+                                                    class="fa fa-video-camera pull-left"></i>Video</a></li>
+                                            <li><a href="../shortcodes/shortcode-animations.html">Animations</a></li>
+                                            <li><a href="../shortcodes/shortcode-paginations.html">Paginations</a></li>
+                                            <li><a href="../shortcodes/shortcode-modals.html">Modals</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+
+            </nav>
+            <!-- /.navbar -->
+
+        </header>
+        <!-- /.header -->
+
     {% endblock %}
-</div>
-{% block footer %}
-    <div id="footer" class="container">
-        &copy; Copyright 2016 by <a href="http://flatcoke.com/">you</a>.
     </div>
-{% endblock %}
+    {% block footer %}
+        <div id="footer" class="container">
+            &copy; Copyright 2016 by <a href="http://flatcoke.com/">you</a>.
+        </div>
+    {% endblock %}
+
+<!-- SCRIPTS -->
+<script src="{{ url_for('static', filename='js/jquery-2.1.4.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/plugins.js') }}"></script>
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+
 </body>
 </html>
