@@ -13,7 +13,7 @@ from models import User
 
 # Define the login form (WTForms)
 
-class SignInForm(Form):
+class SigninForm(Form):
     email = StringField(
         'Email Address', [Email(),
         DataRequired(message='Forgot your email address?'), ], )
@@ -21,7 +21,7 @@ class SignInForm(Form):
         'Password', [DataRequired(message='Must provide a password.'), ], )
 
 
-class SignUpForm(Form):
+class SignupForm(Form):
     username = StringField('Id', [DataRequired("Please enter your id")])
     name = StringField('Name', [DataRequired("Please enter your name")])
     email = StringField(
