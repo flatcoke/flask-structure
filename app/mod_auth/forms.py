@@ -1,5 +1,5 @@
 # Import Form and RecaptchaField (optional)
-from flask.ext.wtf import Form, validators
+from flask_wtf import Form, validators
 
 # Import Form elements such as TextField and BooleanField (optional)
 from wtforms import StringField, PasswordField, SubmitField
@@ -13,7 +13,7 @@ from models import User
 
 # Define the login form (WTForms)
 
-class LoginForm(Form):
+class SignInForm(Form):
     email = StringField(
         'Email Address', [Email(),
         DataRequired(message='Forgot your email address?'), ], )
@@ -21,7 +21,7 @@ class LoginForm(Form):
         'Password', [DataRequired(message='Must provide a password.'), ], )
 
 
-class SignupForm(Form):
+class SignUpForm(Form):
     username = StringField('Id', [DataRequired("Please enter your id")])
     name = StringField('Name', [DataRequired("Please enter your name")])
     email = StringField(
@@ -39,17 +39,17 @@ class SignupForm(Form):
         Form.__init__(self, *args, **kwargs)
 
     def validate(self):
-        if not Form.validate(self):
+        if self.csrf_enabled and Form.validate(self):
             return False
 
         user = User.query.filter_by(email=self.email.data.lower()).first()
         username = User.query.filter_by(username=self.username.data.lower()).first()
         if username:
-            self.email.errors.append("That username is already taken")
+            self.username.errors.append("That username is already taken")
             return False
         if user:
             self.email.errors.append("That email is already taken")
             return False
-        else:
-            return True
+        return True
+
 

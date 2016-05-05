@@ -40,13 +40,11 @@ def signin():
 def signup():
     form = SignupForm()
 
-    print request.method
     if request.method == 'POST':
-        if form.validate() == False:
+        if not form.validate():
             return render_template('/auth/signup.html', form=form)
         else:
             newuser = User(form.username.data, form.name.data, form.email.data, form.password.data)
-            print newuser
             db.session.add(newuser)
             db.session.commit()
 
