@@ -2,7 +2,6 @@
 # We will define this inside /app/__init__.py in the next sections.
 from app import db
 from werkzeug.security import check_password_hash, generate_password_hash
-import datetime
 
 
 # Define a base model for other database tables to inherit

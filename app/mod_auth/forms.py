@@ -38,16 +38,21 @@ class SignupForm(Form):
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
 
-    def validate(self):
-        if self.csrf_enabled and Form.validate(self):
+    @property
+    def validate_on_submit(self):
+        """
+
+        :rtype: object
+        """
+        if not Form.validate_on_submit(self):
             return False
 
-        user = User.query.filter_by(email=self.email.data.lower()).first()
+        email = User.query.filter_by(email=self.email.data.lower()).first()
         username = User.query.filter_by(username=self.username.data.lower()).first()
         if username:
             self.username.errors.append("That username is already taken")
             return False
-        if user:
+        if email:
             self.email.errors.append("That email is already taken")
             return False
         return True

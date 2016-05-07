@@ -11,7 +11,8 @@ class TestCase(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(BASE_DIR, 'test.db')
+        app.config['SQLALCHEMY_DATABASE_URI'] = \
+            'sqlite:///' + os.path.join(BASE_DIR, 'test.db')
         self.client = app.test_client()
         db.create_all()
 
@@ -20,20 +21,40 @@ class TestCase(unittest.TestCase):
         db.drop_all()
 
     def test_sign_up(self):
-        id = 'flatcoke'
-        name = 'taeminkim'
-        email = 'flatcoke89@gmail.com'
-        password = 'qwer1234'
+        url = '/auth/signup/'
 
-        rv = self.client.post('/auth/signup/',
-                              data=dict(username=id,
-                                        name=name,
-                                        password=password,
-                                        email=email, ),
+        form = dict(username='flatcoke',
+                    name='taeminkim',
+                    email='flatcoke89@gmail.com',
+                    password='qwer1234',
+                    confirm='qwer1234',
+                    )
+
+        # nomal case
+        rv = self.client.post(url,
+                              data=form,
                               follow_redirects=True)
         assert rv.status_code == 200
+        assert User.query.filter_by(username=form['username'],
+                                    name=form['name'],
+                                    email=form['email'], ).first()
+        assert len(User.query.all()) == 1
 
-        print User.query.all()
+        # already exists
+        rv = self.client.post('/auth/signup/',
+                              data=form,
+                              follow_redirects=True)
+
+        assert len(User.query.all()) == 1
+        assert rv.data.find('That username is already taken') != -1
+
+        # password is not match with confirm
+        form.pop('confirm')
+        rv = self.client.post('/auth/signup/',
+                              data=form,
+                              follow_redirects=True)
+        assert rv.data.find('Passwords must match') != -1
+
 
 if __name__ == '__main__':
     unittest.main()
