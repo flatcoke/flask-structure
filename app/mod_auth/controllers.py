@@ -44,7 +44,10 @@ def signup():
         if not form.validate_on_submit:
             return render_template('/auth/signup.html', form=form)
         else:
-            newuser = User(form.username.data, form.name.data, form.email.data, form.password.data)
+            newuser = User(form.username.data,
+                           form.name.data,
+                           form.email.data,
+                           form.password.data)
             db.session.add(newuser)
             db.session.commit()
 

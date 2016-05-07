@@ -32,7 +32,8 @@ class SignupForm(Form):
         'Password',
         [DataRequired("Please enter your a password."),
          EqualTo('confirm', message="Passwords must match"), ], )
-    confirm = PasswordField('Re-enter Password', [DataRequired("Repeat Password")])
+    confirm = PasswordField('Re-enter Password',
+                            [DataRequired("Repeat Password")])
     submit = SubmitField("Register Now")
 
     def __init__(self, *args, **kwargs):
@@ -47,8 +48,10 @@ class SignupForm(Form):
         if not Form.validate_on_submit(self):
             return False
 
-        email = User.query.filter_by(email=self.email.data.lower()).first()
-        username = User.query.filter_by(username=self.username.data.lower()).first()
+        email = User.query.filter_by(
+            email=self.email.data.lower()).first()
+        username = User.query.filter_by(
+            username=self.username.data.lower()).first()
         if username:
             self.username.errors.append("That username is already taken")
             return False
