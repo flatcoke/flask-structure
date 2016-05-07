@@ -20,9 +20,15 @@ class TestCase(unittest.TestCase):
         db.session.remove()
         db.drop_all()
 
-    def test_sign_up(self):
+    def signup(self, data):
         url = '/auth/signup/'
 
+        return self.client.post(url,
+                                data=data,
+                                follow_redirects=True)
+
+
+    def test_sign_up(self):
         form = dict(username='flatcoke',
                     name='taeminkim',
                     email='flatcoke89@gmail.com',
@@ -31,29 +37,24 @@ class TestCase(unittest.TestCase):
                     )
 
         # nomal case
-        rv = self.client.post(url,
-                              data=form,
-                              follow_redirects=True)
-        assert rv.status_code == 200
-        assert User.query.filter_by(username=form['username'],
-                                    name=form['name'],
-                                    email=form['email'], ).first()
-        assert len(User.query.all()) == 1
+        rv = self.signup(form)
+        self.assertEqual(rv.status_code, 200)
+        self.assertIsNotNone(User.query.filter_by(
+                                username=form['username'],
+                                name=form['name'],
+                                email=form['email'], ).first())
+        self.assertIs(len(User.query.all()), 1)
 
         # already exists
-        rv = self.client.post('/auth/signup/',
-                              data=form,
-                              follow_redirects=True)
+        rv = self.signup(form)
 
-        assert len(User.query.all()) == 1
-        assert rv.data.find('That username is already taken') != -1
+        self.assertIs(len(User.query.all()), 1)
+        self.assertIn('That username is already taken', rv.data)
 
         # password is not match with confirm
         form.pop('confirm')
-        rv = self.client.post('/auth/signup/',
-                              data=form,
-                              follow_redirects=True)
-        assert rv.data.find('Passwords must match') != -1
+        rv = self.signup(form)
+        self.assertIn('Passwords must match', rv.data)
 
 
 if __name__ == '__main__':
