@@ -1,85 +1,72 @@
 {% include "header.html" %}
 {% block content %}
-    {% for message in form.username.errors %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-
-    {% for message in form.name.errors %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-
-    {% for message in form.email.errors %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-
-    {% for message in form.password.errors %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
-
-    {% for message in form.confirm.errors %}
-        <div class="flash">{{ message }}</div>
-    {% endfor %}
+    <div>
+    </div>
     <!-- CONTAINER -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-8 col-lg-offset-4 col-md-offset-3 col-sm-offset-2">
-                <!-- CONTAINER -->
-                <div class="container text-center">
-                    <hr class="hr-nobg"/>
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#register-modal">
-                        Click to open modal window
-                    </button>
-                    <hr class="hr-nobg"/>
-                </div>
+    <div class="container pt">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 col-lg-offset-4 col-md-offset-3 col-sm-offset-2">
+            <!-- CONTAINER -->
+            <div>
+                <h2>Register
+                    <small>Register Now or <a href="">Login to Account</a></small>
+                </h2>
+                <form action="{{ url_for('auth.signup') }}" method=post>
+                    {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form.username.label }}
+                        {% for message in form.username.errors %}
+                            <div class="flash font-varela">
+                                <i class="fa fa-times text-danger pb4"></i>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {{ form.username }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.name.label }}
+                        {{ form.name }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.email.label }}
+                        {% for message in form.email.errors %}
+                            <div class="flash font-varela">
+                                <i class="fa fa-times text-danger pb4"></i>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {{ form.email }}
+                    </div>
+                    <hr class="hr-sm hr-stroke"/>
+                    <div class="form-group">
+                        {{ form.password.label }}
+                        {% for message in form.password.errors %}
+                            <div class="flash font-varela">
+                                <i class="fa fa-times text-danger pb4"></i>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {{ form.password }}
+                    </div>
+                    <div class="form-group">
+                        {{ form.confirm.label }}
+                        {% for message in form.confirm.errors %}
+                            <div class="flash font-varela">
+                                <i class="fa fa-times text-danger pb4"></i>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                        {{ form.confirm }}
+                    </div>
+                    <hr class="hr-sm hr-stroke"/>
+                    <div class="form-group">
+                        {{ form.submit(class_='btn btn-primary') }}
+                    </div>
+                </form>
                 <!-- /.container -->
             </div>
         </div>
     </div>
-    <!-- Modal Register -->
-    <div class="modal fade" id="register-modal">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
-                    <h6 class="modal-title">Register Now</h6>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-form">
-                        <p>Register Now or <a href="">Login to Account</a></p>
-                        <form action="{{ url_for('auth.signup') }}" method=post>
-                            {{ form.hidden_tag() }}
-                            <div class="form-group">
-                                {{ form.username.label }}
-                                {{ form.username }}
-                            </div>
-                            <div class="form-group">
-                                {{ form.name.label }}
-                                {{ form.name }}
-                            </div>
-                            <div class="form-group">
-                                {{ form.email.label }}
-                                {{ form.email }}
-                            </div>
-                            <hr class="hr-sm hr-stroke"/>
-                            <div class="form-group">
-                                {{ form.password.label }}
-                                {{ form.password }}
-                            </div>
-                            <div class="form-group">
-                                {{ form.confirm.label }}
-                                {{ form.confirm }}
-                            </div>
-                            <hr class="hr-sm hr-stroke"/>
-                            <div class="form-group">
-                                {{ form.submit(class_='btn btn-primary') }}
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- /.container -->
 
 {% endblock %}
 
