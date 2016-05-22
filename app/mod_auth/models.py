@@ -2,24 +2,25 @@
 # We will define this inside /app/__init__.py in the next sections.
 from app import db
 from werkzeug.security import check_password_hash, generate_password_hash
+from sqlalchemy.orm.exc import NoResultFound
 
 
 # Define a base model for other database tables to inherit
-class Base(db.Model):
+class UserBase(db.Model):
     __abstract__ = True
 
+    # Id Primary_key
     id = db.Column(db.Integer, primary_key=True)
+
     date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
     date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
                               onupdate=db.func.current_timestamp())
 
 
 # Define a User model
-class User(db.Model):
+class User(UserBase):
     __tablename__ = 'user'
 
-    # Id Primary_key
-    id = db.Column(db.Integer, primary_key=True)
     # User Name
     username = db.Column(db.String(50), nullable=False)
     name = db.Column(db.String(128), nullable=False)
@@ -41,10 +42,22 @@ class User(db.Model):
         self.set_password(password)
 
     def __repr__(self):
-        return '<User %r>' % (self.name)
+        return '<User %s>' % (self.username)
 
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
     def check_password(self, password):
         return check_password_hash(self.password, password)
+
+    @classmethod
+    def get(cls, user_id):
+        """
+
+        :rtype: object
+        :type user_id: int
+        """
+        try:
+            return User.query.filter_by(id=user_id).one()
+        except NoResultFound:
+            return None

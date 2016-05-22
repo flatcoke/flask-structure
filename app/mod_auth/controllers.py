@@ -42,7 +42,7 @@ def signup():
 
     if request.method == 'POST':
         if not form.validate_on_submit:
-            return render_template('/auth/signup.html', form=form)
+            return render_template('/auth/signup.html', form=form), 406
         else:
             newuser = User(form.username.data,
                            form.name.data,

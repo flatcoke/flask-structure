@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 # Import Form and RecaptchaField (optional)
 from flask_wtf import Form, validators
 
@@ -14,11 +15,16 @@ from models import User
 # Define the login form (WTForms)
 
 class SigninForm(Form):
+    '''  로그인 폼
+    '''
+
     email = StringField(
-        'Email Address', [Email(),
-        DataRequired(message='Forgot your email address?'), ], )
+        'Email Address',
+        [Email(),
+         DataRequired(message='Forgot your email address?'), ], )
     password = PasswordField(
-        'Password', [DataRequired(message='Must provide a password.'), ], )
+        'Password',
+        [DataRequired(message='Must provide a password.'), ], )
 
 
 class SignupForm(Form):
@@ -43,7 +49,7 @@ class SignupForm(Form):
     def validate_on_submit(self):
         """
 
-        :rtype: object
+        :rtype: bool
         """
         if not Form.validate_on_submit(self):
             return False
@@ -59,5 +65,3 @@ class SignupForm(Form):
             self.email.errors.append("That email is already taken")
             return False
         return True
-
-

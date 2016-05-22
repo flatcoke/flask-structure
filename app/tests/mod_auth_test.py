@@ -20,41 +20,100 @@ class TestCase(unittest.TestCase):
         db.session.remove()
         db.drop_all()
 
-    def signup(self, data):
+    def test_user_get_function(self):
+        test_list = [
+            dict(username='flatcoke', password='qwer1235',
+                 email='flatcoke89@gmail.com', name='TaeminKim', ),
+            dict(username='c121213', password='12341234',
+                 email='c121213@naver.com', name='Kevin', ),
+            dict(username='gogogohaha', password='asdfasdf',
+                 email='flatcoke@naver.com', name='Min', ),
+            dict(username='taemin-kim', password='googoo',
+                 email='taeminkim98@gmail.com', name='Le', ),
+            dict(username='11good', password='1',
+                 email='c121213@nate.com', name='flatcoke', ),
+        ]
+        for i in test_list:
+            user = User(i['username'], i['name'], i['email'], i['password'])
+            db.session.add(user)
+            db.session.commit()
+
+            result = User.get(user.id)
+            self.assertIsInstance(result, User)
+            self.assertEqual(result.username, i['username'])
+            self.assertEqual(result.name, i['name'])
+            self.assertNotEqual(result.password, i['password'])
+
+    def post_signup(self, data):
         url = '/auth/signup/'
 
         return self.client.post(url,
                                 data=data,
                                 follow_redirects=True)
 
-
     def test_sign_up(self):
-        form = dict(username='flatcoke',
-                    name='taeminkim',
-                    email='flatcoke89@gmail.com',
-                    password='qwer1234',
-                    confirm='qwer1234',
-                    )
+        test_list = [
+            dict(username='flatcoke', password='qwer1235', confirm='qwer1235',
+                 email='flatcoke89@gmail.com', name='TaeminKim', ),
+            dict(username='c121213', password='12341234', confirm='12341234',
+                 email='c121213@naver.com', name='Kevin', ),
+            dict(username='gogogohaha', password='asdfasdf', confirm='asdfasdf',
+                 email='flatcoke@naver.com', name='Min', ),
+            dict(username='taemin-kim', password='gogogo', confirm='gogogo',
+                 email='taeminkim98@gmail.com', name='Le', ),
+        ]
 
-        # nomal case
-        rv = self.signup(form)
-        self.assertEqual(rv.status_code, 200)
-        self.assertIsNotNone(User.query.filter_by(
-                                username=form['username'],
-                                name=form['name'],
-                                email=form['email'], ).first())
-        self.assertIs(len(User.query.all()), 1)
+        # normal case
+        for index, item in enumerate(test_list):
+            rv = self.post_signup(item)
+            self.assertEqual(rv.status_code, 200)
+            self.assertIsNotNone(User.query.filter_by(
+                username=item['username'],
+                name=item['name'],
+                email=item['email'], ).first())
+            self.assertIs(len(User.query.all()), index + 1)
 
         # already exists
-        rv = self.signup(form)
+        for i in test_list:
+            rv = self.post_signup(i)
+            self.assertEqual(rv.status_code, 406)
+            self.assertIn("That username is already taken", rv.data)
+        self.assertIs(len(User.query.all()), len(test_list))
 
-        self.assertIs(len(User.query.all()), 1)
-        self.assertIn('That username is already taken', rv.data)
+        # User db clear
+        User.query.delete()
 
-        # password is not match with confirm
-        form.pop('confirm')
-        rv = self.signup(form)
-        self.assertIn('Passwords must match', rv.data)
+        # password does not match with confirm
+        for i in test_list:
+            i['confirm'] += 'test'
+            rv = self.post_signup(i)
+            self.assertEqual(rv.status_code, 406)
+            self.assertIn("Passwords must match", rv.data)
+
+        # not exists confirm
+        for i in test_list:
+            i.pop('confirm', None)
+            rv = self.post_signup(i)
+            self.assertEqual(rv.status_code, 406)
+            self.assertIn("Repeat Password", rv.data)
+
+    def test_sign_in(self):
+        return
+        url = '/auth/signin/'
+        form = dict(username='flatcoke',
+                    password='qwer1234',
+                    confirm='qwer1234',
+                    name='TaeminKim',
+                    email='flatcoke89@gmail.com')
+        self.post_signup(form)
+
+        self.client.post(url,
+                         data=form,
+                         follow_redirects=True)
+
+        self.assertEqual(self.client.session['username'], 'flatcoke')
+        user = self.User.query.filter_by(username=form['username']).first()
+        self.assertEqual(self.client.session['user_id'], user.id)
 
 
 if __name__ == '__main__':

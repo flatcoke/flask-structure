@@ -1,14 +1,10 @@
-{% extends "forc/../base.html" %}
+{% include "header.html" %}
 
-{% block title %}{{ super() }}{% endblock %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
-{% block content %}
-    <div class="container">
-    {{ super() }}
-    <h1 class="page-header">taemin</h1>
-    <p class="important">
-    Welcome on my awesome homepage.
+<div class="content">
+    <div class="container maincontent">
+        <!-- CONTAINER -->
+        Hi My name is Taemin Kim
     </div>
-{% endblock %}
+</div>
+
+{% include "footer.html" %}
