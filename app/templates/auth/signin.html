@@ -1,55 +1,76 @@
-{% extends "bootstrap/base.html" %}
+{% include "header.html" %}
 
+<!-- WRAPPER -->
+<div class="wrapper">
 
-{% blcok navbar %}
-{% macro render_field(field, placeholder=None) %}
-    {% if field.errors %}
-        <div>
-    {% elif field.flags.error %}
-        <div>
-    {% else %}
-        <div>
-    {% endif %}
-{% set css_class = 'form-control ' + kwargs.pop('class', '') %}
-{{ field(class=css_class, placeholder=placeholder, **kwargs) }}
+	<!-- PAGE TITLE -->
+	<header class="pagetitle pagetitle-sm">
+		<div class="container">
+			<div class="divtable irow">
+				<div class="divcell">
+					<i class="fa fa-lock"></i>
+					<h1>Login</h1>
+					<div class="divider"></div>
+					<span class="subtitle">Login to your account</span>
+				</div>
+				<div class="divcell text-right">
+					<ol class="breadcrumb">
+						<li><a href="#">Home</a></li>
+						<li class="active">Pages</li>
+					</ol>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- /.pagetitle -->
+
+	<!-- CONTENT -->
+	<div class="content">
+
+		<!-- CONTAINER -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-4 col-md-6 col-sm-8 col-lg-offset-4 col-md-offset-3 col-sm-offset-2">
+					<h2>Login to account <small>Enter to account or <a href="">Register Now</a></small></h2>
+					<hr class="hr-sm hr-stroke"/>
+					<form>
+						<div class="form-group">
+							<label for="username">Username</label>
+							<input type="text" name="name" id="username">
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" name="name" id="password">
+						</div>
+						<div class="form-group">
+							<a href="">Forgot password?</a>
+						</div>
+						<hr class="hr-sm hr-stroke"/>
+						<div class="form-group">
+							<input type="submit" class="btn btn-primary btn-wide" value="Send">
+							<label class="checkbox-inline">
+								<input type="checkbox" id="inlineCheckbox1" value="option1"> Remember me
+							</label>
+						</div>
+						<hr class="hr-sm hr-stroke"/>
+						<div class="form-group">
+							<nav class="share-links share-links-sm">
+								<a href="" class="fa fa-facebook"></a>
+								<a href="" class="fa fa-twitter"></a>
+								<a href="" class="fa fa-google-plus"></a>
+								<span class="hidden-xxs">— Login with accounts</span>
+							</nav>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- /.container -->
+
+	</div>
+	<!-- /.content -->
+
 </div>
-{% endmacro %}
+<!-- /.wrapper -->
 
-<div>
-    <div>
-        <legend>Sign in</legend>
-        {% with errors = get_flashed_messages(category_filter=["error"]) %}
-            {% if errors %}
-                <div>
-                    {% for error in errors %}
-                        {{ error }}<br>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        {% endwith %}
-
-        {% if form.errors %}
-            <div>
-                {% for field, error in form.errors.items() %}
-                    {% for e in error %}
-                        {{ e }}<br>
-                    {% endfor %}
-                {% endfor %}
-            </div>
-        {% endif %}
-        <form method="POST" action="." accept-charset="UTF-8" role="form">
-            {{ form.csrf_token }}
-            {{ render_field(form.email, placeholder="Your Email Address",
-                                  autofocus="") }}
-            {{ render_field(form.password, placeholder="Password") }}
-            <div>
-                <label>
-                    <input type="checkbox" name="remember" value="1"> Remember Me
-                </label>
-                <a role="button" href="">Forgot your password?</a><span class="clearfix"></span>
-            </div>
-            <button type="submit" name="submit">Sign in</button>
-        </form>
-    </div>
-</div>
-{% endblock %}
+{% include "footer.html" %}

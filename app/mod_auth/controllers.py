@@ -24,16 +24,17 @@ def signin():
     # If sign in form is submitted
     form = SigninForm()
 
-    # Verify the sign in form
-    if form.validate_on_submit:
-        user = User.query.filter_by(email=form.email.data).first()
-        if user and check_password_hash(user.password, form.password.data):
-            session['user_id'] = user.id
-            flash('Welcome %s' % user.name)
-            return redirect(url_for('auth.home'))
-        flash('Wrong email or password', 'error-message')
+    if request.method == 'POST':
+        # Verify the sign in form
+        if form.validate_on_submit:
+            user = User.query.filter_by(email=form.email.data).first()
+            if user and check_password_hash(user.password, form.password.data):
+                session['user_id'] = user.id
+                flash('Welcome %s' % user.name)
+                return redirect(url_for('auth.home'))
+            flash('Wrong email or password', 'error-message')
 
-    return render_template("auth/signin.html", form=form)
+    return render_template("/auth/signin.html", form=form)
 
 
 @mod_auth.route('/signup/', methods=['GET', 'POST'])
