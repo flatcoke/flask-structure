@@ -107,9 +107,10 @@ class TestCase(unittest.TestCase):
                     email='flatcoke89@gmail.com')
         self.post_signup(form)
 
-        self.client.post(url,
+        rv = self.client.post(url,
                          data=form,
                          follow_redirects=True)
+        self.assertEqual(rv.status_code, 200)
 
         self.assertEqual(self.client.session['username'], 'flatcoke')
         user = self.User.query.filter_by(username=form['username']).first()
