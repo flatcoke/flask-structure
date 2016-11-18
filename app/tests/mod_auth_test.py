@@ -1,18 +1,12 @@
 #!flask/bin/python
-import os
 import unittest
 
-from config import BASE_DIR
 from app import app, db
 from app.mod_auth.models import User
 
 
 class TestCase(unittest.TestCase):
     def setUp(self):
-        app.config['TESTING'] = True
-        app.config['WTF_CSRF_ENABLED'] = False
-        app.config['SQLALCHEMY_DATABASE_URI'] = \
-            'sqlite:///' + os.path.join(BASE_DIR, 'test.db')
         self.client = app.test_client()
         db.create_all()
 
