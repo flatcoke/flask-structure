@@ -1,20 +1,12 @@
-# Import flask and template operators
 from flask import Flask, render_template
-
-# Import SQLAlchemy
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.script import Manager
 
-# ETC
-
-# Define the WSGI application object
 app = Flask(__name__)
 
-# Configurations
 app.config.from_object('config.ProductionConfig')
-
-# Define the database object which is imported
-# by modules and controllers
 db = SQLAlchemy(app)
+manager = Manager(app)
 
 
 # HTTP error handling
@@ -22,13 +14,16 @@ db = SQLAlchemy(app)
 def not_found(error):
     return render_template('error/404.html'), 404
 
+
 @app.errorhandler(500)
 def internal_server_error(error):
     return render_template('error/500.html'), 500
 
+
 # Import a module / component using its blueprint handler variable (mod_auth)
 from app.mod_auth.controllers import mod_auth as auth_module
 from app.forc.controllers import forc as forc_module
+
 
 # Register blueprint(s)
 # app.register_blueprint(xyz_module)

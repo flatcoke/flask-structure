@@ -1,10 +1,7 @@
 # Run a test server.
 import unittest
 
-from app import app
-from flask.ext.script import Manager
-
-manager = Manager(app)
+from app import manager, app
 
 
 @manager.command
