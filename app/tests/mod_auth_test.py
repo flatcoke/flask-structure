@@ -1,6 +1,5 @@
-#!flask/bin/python
+# -*-coding:utf-8-*-
 import unittest
-
 from app import app, db
 from app.mod_auth.models import User
 
@@ -68,8 +67,8 @@ class TestCase(unittest.TestCase):
             self.assertIs(len(User.query.all()), index + 1)
 
         # already exists
-        for i in test_list:
-            rv = self.post_signup(i)
+        for item in test_list:
+            rv = self.post_signup(item)
             self.assertEqual(rv.status_code, 406)
             self.assertIn("That username is already taken", rv.data)
         self.assertIs(len(User.query.all()), len(test_list))
@@ -78,37 +77,93 @@ class TestCase(unittest.TestCase):
         User.query.delete()
 
         # password does not match with confirm
-        for i in test_list:
-            i['confirm'] += 'test'
-            rv = self.post_signup(i)
+        for item in test_list:
+            item['confirm'] += 'test'
+            rv = self.post_signup(item)
             self.assertEqual(rv.status_code, 406)
             self.assertIn("Passwords must match", rv.data)
 
         # not exists confirm
-        for i in test_list:
-            i.pop('confirm', None)
-            rv = self.post_signup(i)
+        for item in test_list:
+            item.pop('confirm', None)
+            rv = self.post_signup(item)
             self.assertEqual(rv.status_code, 406)
             self.assertIn("Repeat Password", rv.data)
 
     def test_sign_in(self):
-        return
         url = '/auth/signin/'
-        form = dict(username='flatcoke',
-                    password='qwer1234',
-                    confirm='qwer1234',
-                    name='TaeminKim',
-                    email='flatcoke89@gmail.com')
-        self.post_signup(form)
+        test_list = [
+            dict(username='flatcoke', password='qwer1235', confirm='qwer1235',
+                 email='flatcoke89@gmail.com', name='TaeminKim', ),
+            dict(username='c121213', password='12341234', confirm='12341234',
+                 email='c121213@naver.com', name='Kevin', ),
+            dict(username='gogogohaha', password='asdfasdf', confirm='asdfasdf',
+                 email='flatcoke@naver.com', name='Min', ),
+            dict(username='taemin-kim', password='gogogo', confirm='gogogo',
+                 email='taeminkim98@gmail.com', name='Le', ),
+        ]
+        # sing up before test
+        for item in test_list:
+            self.post_signup(item)
 
-        rv = self.client.post(url,
-                         data=form,
-                         follow_redirects=True)
-        self.assertEqual(rv.status_code, 200)
+        # success (detail)
+        for index, item in enumerate(test_list):
+            rv = self.client.post(url,
+                                  data=item,
+                                  follow_redirects=True)
+            self.assertEqual(rv.status_code, 200)
 
-        self.assertEqual(self.client.session['username'], 'flatcoke')
-        user = self.User.query.filter_by(username=form['username']).first()
-        self.assertEqual(self.client.session['user_id'], user.id)
+            # session 값, 성공 메세지 체크
+            with self.client.session_transaction() as session:
+                self.assertEqual(session['username'], item['username'])
+                flash = dict(session.pop('_flashes'))
+                self.assertEqual(flash['message'],
+                                 'Welcome %s' % item['username'])
+                # TODO ('key': 'value') 로 session check
+
+            user = User.query.filter_by(username=item['username']).first()
+            self.assertEqual(user.username, item['username'])
+            self.assertEqual(user.name, item['name'])
+            del item['name']
+            del item['username']
+            del item['confirm']
+
+        # success (simple)
+        for item in test_list:
+            rv = self.client.post(url,
+                                  data=item,
+                                  follow_redirects=True)
+            self.assertEqual(rv.status_code, 200)
+
+            with self.client.session_transaction() as session:
+                self.assertEqual(session['email'], item['email'])
+                del session['_flashes']
+
+        failure_list = test_list
+        for item in failure_list:
+            item['password'] += 'haha'
+            rv = self.client.post(url,
+                                  data=item,
+                                  follow_redirects=True)
+            self.assertEqual(rv.status_code, 200)
+
+            with self.client.session_transaction() as session:
+                self.assertEqual(session['_flashes'][0][1],
+                                 'Wrong email or password')
+                del session['_flashes']
+
+        failure_list = test_list
+        for item in failure_list:
+            item['email'] += 'haha'
+            rv = self.client.post(url,
+                                  data=item,
+                                  follow_redirects=True)
+            self.assertEqual(rv.status_code, 200)
+
+            with self.client.session_transaction() as session:
+                self.assertEqual(session['_flashes'][0][1],
+                                 'Wrong email or password')
+                del session['_flashes']
 
 
 if __name__ == '__main__':

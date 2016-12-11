@@ -1,37 +1,27 @@
-# Import flask dependencies
-from flask import Blueprint, request, render_template, \
-    flash, session, redirect, url_for
-
-# Import password / encryption helper tools
-from werkzeug.security import check_password_hash, generate_password_hash
-
-# Import the database object from the main app module
+# -*-coding:utf-8-*-
+from flask import Blueprint, request, render_template, flash, session, \
+    redirect, url_for
+from werkzeug.security import check_password_hash
 from app import db
-
-# Import module forms
 from app.mod_auth.forms import SigninForm, SignupForm
-
-# Import module models (i.e. User)
 from app.mod_auth.models import User
 
-# Define the blueprint: 'auth', set its url prefix: app.url/auth
 mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-# Set the route and accepted methods
 @mod_auth.route('/signin/', methods=['GET', 'POST'])
 def signin():
     # If sign in form is submitted
     form = SigninForm()
 
     if request.method == 'POST':
-        # Verify the sign in form
         if form.validate_on_submit:
             user = User.query.filter_by(email=form.email.data).first()
             if user and check_password_hash(user.password, form.password.data):
-                session['user_id'] = user.id
-                flash('Welcome %s' % user.name)
-                return redirect(url_for('auth.home'))
+                session['username'] = user.username
+                session['email'] = user.email
+                flash('Welcome %s' % user.username)
+                return redirect(url_for('home'))
             flash('Wrong email or password', 'error-message')
 
     return render_template("/auth/signin.html", form=form)
@@ -45,11 +35,11 @@ def signup():
         if not form.validate_on_submit:
             return render_template('/auth/signup.html', form=form), 406
         else:
-            newuser = User(form.username.data,
-                           form.name.data,
-                           form.email.data,
-                           form.password.data)
-            db.session.add(newuser)
+            user = User(username=form.username.data,
+                        name=form.name.data,
+                        email=form.email.data,
+                        password=form.password.data)
+            db.session.add(user)
             db.session.commit()
 
             return "sign in the user and redirect to Home"  # TODO

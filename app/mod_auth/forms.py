@@ -1,22 +1,12 @@
 # -*- coding:utf-8 -*-
-# Import Form and RecaptchaField (optional)
-from flask_wtf import Form, validators
-
-# Import Form elements such as TextField and BooleanField (optional)
+from flask_wtf import Form
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
-
-# Import Form validators
 from wtforms.validators import DataRequired, Email, EqualTo
-
-# Form and DB
 from models import User
 
 
-# Define the login form (WTForms)
-
 class SigninForm(Form):
-    '''  로그인 폼
-    '''
+    """ 로그인 폼 """
 
     email = StringField(
         'Email Address',
