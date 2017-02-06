@@ -1,10 +1,14 @@
 {% block stylesheet %}
-    <link href="{{ url_for('static', filename='') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
-    Header Body 
+    Header Body
 {% endblock %}
 {% block javascript %}
-    <script> </script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script>
+
+    </script>
 {% endblock %}
 
