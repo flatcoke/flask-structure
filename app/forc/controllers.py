@@ -1,11 +1,16 @@
-from flask import render_template, Blueprint
-from app import db
+from flask import render_template, Blueprint, redirect, url_for
+from app import db, app
 
 mod = Blueprint('forc', __name__, url_prefix='/forc')
 
 
-@mod.route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home():
+    return redirect(url_for('forc.index'))
+
+
+@mod.route('/', methods=['GET'])
+def index():
     return render_template('forc/home.html')
 
 
