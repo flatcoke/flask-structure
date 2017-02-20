@@ -6,10 +6,10 @@ from app import db
 from app.mod_auth.forms import SigninForm, SignupForm
 from app.mod_auth.models import User
 
-mod_auth = Blueprint('auth', __name__, url_prefix='/auth')
+mod = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@mod_auth.route('/signin/', methods=['GET', 'POST'])
+@mod.route('/signin/', methods=['GET', 'POST'])
 def signin():
     # If sign in form is submitted
     form = SigninForm()
@@ -27,7 +27,7 @@ def signin():
     return render_template("/auth/signin.html", form=form)
 
 
-@mod_auth.route('/signup/', methods=['GET', 'POST'])
+@mod.route('/signup/', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()
 

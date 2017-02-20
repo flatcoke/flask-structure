@@ -1,10 +1,17 @@
 {% include "header.html" %}
-
-<div class="content">
-    <div class="container maincontent">
-        <!-- CONTAINER -->
-        Hi My name is Taemin Kim
+{% block body %}
+    <div class="content">
+        <div class="container">
+            <!-- CONTAINER -->
+            Hi My name is Taemin Kim
+        </div>
     </div>
-</div>
-
+{% endblock %}
+{% block javascript %}
+    <script>
+        function test() {
+            console.log('taemin')
+        }
+    </script>
+{% endblock %}
 {% include "footer.html" %}

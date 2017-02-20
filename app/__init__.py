@@ -22,8 +22,8 @@ def internal_server_error(error):
 
 
 # Import a module / component using its blueprint handler variable (mod_auth)
-from app.mod_auth.controllers import mod_auth as auth_module
-from app.forc.controllers import forc as forc_module
+from app.mod_auth.controllers import mod as auth_module
+from app.forc.controllers import mod as forc_module
 
 
 # Register blueprint(s)
