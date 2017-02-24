@@ -5,6 +5,7 @@ from app.mod_auth.models import User
 
 
 class TestCase(unittest.TestCase):
+
     def setUp(self):
         self.client = app.test_client()
         db.create_all()
