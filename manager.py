@@ -1,19 +1,40 @@
+# -*- coding:utf-8 -*-
 # Run a test server.
+import os
 import unittest
 
-from app import manager, app
+from app import create_app, db
+from flask.ext.script import Manager
+from flask.ext.migrate import Migrate, MigrateCommand
+
+app = create_app(os.environ.get("FLATCOKE") or 'development')
+manager = Manager(app)
+migrate = Migrate(app, db)
+
+
+manager.add_command('db', MigrateCommand)
 
 
 @manager.command
 def hello():
     """say hello for testing"""
-    print 'hello'
+    print ('hello')
+
+
+@manager.command
+def recreate_db():
+    """
+    Recreates a local database. You probably should not use this on
+    production.
+    """
+    db.drop_all()
+    db.create_all()
+    db.session.commit()
 
 
 @manager.command
 def test():
     """Run unit tests."""
-    app.config.from_object('config.TestingConfig')
     tests = unittest.TestLoader().discover('app.tests', pattern='*.py')
     unittest.TextTestRunner(verbosity=1).run(tests)
 
@@ -26,4 +47,3 @@ def dev():
 
 if __name__ == '__main__':
     manager.run()
-

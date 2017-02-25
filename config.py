@@ -29,6 +29,10 @@ class Config(object):
     # Secret key for signing cookies
     SECRET_KEY = "secret"
 
+    @staticmethod
+    def init_app(app):
+        pass
+
 
 class ProductionConfig(Config):
     pass
@@ -42,4 +46,12 @@ class DevelopmentConfig(Config):
 class TestingConfig(Config):
     TESTING = True
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(Config.BASE_DIR, 'test.db')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
+        os.path.join(Config.BASE_DIR, 'test.db')
+
+
+config = {
+    'development': DevelopmentConfig,
+    'testing': TestingConfig,
+    'production': ProductionConfig,
+}
