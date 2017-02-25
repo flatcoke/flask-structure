@@ -1,172 +1,51 @@
-# -*-coding:utf-8-*-
-import unittest
-from app import app, db
-from app.mod_auth.models import User
+# -*- coding:utf-8 -*-
+from app import db
+from werkzeug.security import check_password_hash, generate_password_hash
+from sqlalchemy.orm.exc import NoResultFound
 
 
-class TestCase(unittest.TestCase):
+class UserBase(db.Model):
+    __abstract__ = True
 
-    def setUp(self):
-        self.client = app.test_client()
-        db.create_all()
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
-
-    def test_user_get_function(self):
-        test_list = [
-            dict(username='flatcoke', password='qwer1235',
-                 email='flatcoke89@gmail.com', name='TaeminKim', ),
-            dict(username='c121213', password='12341234',
-                 email='c121213@naver.com', name='Kevin', ),
-            dict(username='gogogohaha', password='asdfasdf',
-                 email='flatcoke@naver.com', name='Min', ),
-            dict(username='taemin-kim', password='googoo',
-                 email='taeminkim98@gmail.com', name='Le', ),
-            dict(username='11good', password='1',
-                 email='c121213@nate.com', name='flatcoke', ),
-        ]
-        for i in test_list:
-            user = User(i['username'], i['name'], i['email'], i['password'])
-            db.session.add(user)
-            db.session.commit()
-
-            result = User.get(user.id)
-            self.assertIsInstance(result, User)
-            self.assertEqual(result.username, i['username'])
-            self.assertEqual(result.name, i['name'])
-            self.assertNotEqual(result.password, i['password'])
-
-    def post_signup(self, data):
-        url = '/auth/signup/'
-
-        return self.client.post(url,
-                                data=data,
-                                follow_redirects=True)
-
-    def test_sign_up(self):
-        return
-        test_list = [
-            dict(username='flatcoke', password='qwer1235', confirm='qwer1235',
-                 email='flatcoke89@gmail.com', name='TaeminKim', ),
-            dict(username='c121213', password='12341234', confirm='12341234',
-                 email='c121213@naver.com', name='Kevin', ),
-            dict(username='gogogohaha', password='asdfasdf', confirm='asdfasdf',
-                 email='flatcoke@naver.com', name='Min', ),
-            dict(username='taemin-kim', password='gogogo', confirm='gogogo',
-                 email='taeminkim98@gmail.com', name='Le', ),
-        ]
-
-        # normal case
-        for index, item in enumerate(test_list):
-            rv = self.post_signup(item)
-            self.assertEqual(rv.status_code, 200)
-            self.assertIsNotNone(User.query.filter_by(
-                username=item['username'],
-                name=item['name'],
-                email=item['email'], ).first())
-            self.assertIs(len(User.query.all()), index + 1)
-
-        # already exists
-        for item in test_list:
-            rv = self.post_signup(item)
-            self.assertEqual(rv.status_code, 406)
-            self.assertIn("That username is already taken", rv.data)
-        self.assertIs(len(User.query.all()), len(test_list))
-
-        # User db clear
-        User.query.delete()
-
-        # password does not match with confirm
-        for item in test_list:
-            item['confirm'] += 'test'
-            rv = self.post_signup(item)
-            self.assertEqual(rv.status_code, 406)
-            self.assertIn("Passwords must match", rv.data)
-
-        # not exists confirm
-        for item in test_list:
-            item.pop('confirm', None)
-            rv = self.post_signup(item)
-            self.assertEqual(rv.status_code, 406)
-            self.assertIn("Repeat Password", rv.data)
-
-    def test_sign_in(self):
-        url = '/auth/signin/'
-        test_list = [
-            dict(username='flatcoke', password='qwer1235', confirm='qwer1235',
-                 email='flatcoke89@gmail.com', name='TaeminKim', ),
-            dict(username='c121213', password='12341234', confirm='12341234',
-                 email='c121213@naver.com', name='Kevin', ),
-            dict(username='gogogohaha', password='asdfasdf', confirm='asdfasdf',
-                 email='flatcoke@naver.com', name='Min', ),
-            dict(username='taemin-kim', password='gogogo', confirm='gogogo',
-                 email='taeminkim98@gmail.com', name='Le', ),
-        ]
-        # sing up before test
-        for item in test_list:
-            self.post_signup(item)
-
-        # success (detail)
-        for index, item in enumerate(test_list):
-            rv = self.client.post(url,
-                                  data=item,
-                                  follow_redirects=True)
-            self.assertEqual(rv.status_code, 200)
-
-            # session 값, 성공 메세지 체크
-            with self.client.session_transaction() as session:
-                self.assertEqual(session['username'], item['username'])
-                flash = dict(session.pop('_flashes'))
-                self.assertEqual(flash['message'],
-                                 'Welcome %s' % item['username'])
-                # TODO ('key': 'value') 로 session check
-
-            user = User.query.filter_by(username=item['username']).first()
-            self.assertEqual(user.username, item['username'])
-            self.assertEqual(user.name, item['name'])
-            del item['name']
-            del item['username']
-            del item['confirm']
-
-        # success (simple)
-        for item in test_list:
-            rv = self.client.post(url,
-                                  data=item,
-                                  follow_redirects=True)
-            self.assertEqual(rv.status_code, 200)
-
-            with self.client.session_transaction() as session:
-                self.assertEqual(session['email'], item['email'])
-                del session['_flashes']
-
-        failure_list = test_list
-        for item in failure_list:
-            item['password'] += 'haha'
-            rv = self.client.post(url,
-                                  data=item,
-                                  follow_redirects=True)
-            self.assertEqual(rv.status_code, 200)
-
-            with self.client.session_transaction() as session:
-                self.assertEqual(session['_flashes'][0][1],
-                                 'Wrong email or password')
-                del session['_flashes']
-
-        failure_list = test_list
-        for item in failure_list:
-            item['email'] += 'haha'
-            rv = self.client.post(url,
-                                  data=item,
-                                  follow_redirects=True)
-            self.assertEqual(rv.status_code, 200)
-
-            with self.client.session_transaction() as session:
-                self.assertEqual(session['_flashes'][0][1],
-                                 'Wrong email or password')
-                del session['_flashes']
+    id = db.Column(db.Integer, primary_key=True)
+    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
+    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
+                              onupdate=db.func.current_timestamp())
 
 
-if __name__ == '__main__':
-    unittest.main()
+class User(UserBase):
+    __tablename__ = 'user'
+
+    username = db.Column(db.String(50), nullable=False)
+    name = db.Column(db.String(128), nullable=False)
+    email = db.Column(db.String(128), nullable=False, unique=True)
+    password = db.Column(db.String(54), nullable=False)
+    level = db.Column(db.Integer, nullable=False, default=10)
+    active = db.Column(db.SmallInteger, nullable=False, default=True)
+
+    def __init__(self, username, name, email, password):
+        self.username = username
+        self.name = name
+        self.email = email
+        self.set_password(password)
+
+    def __repr__(self):
+        return '<User %s>' % self.username
+
+    def set_password(self, password):
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
+
+    @classmethod
+    def get(cls, user_id):
+        """
+
+        :rtype: object
+        :type user_id: int
+        """
+        try:
+            return User.query.filter_by(id=user_id).one()
+        except NoResultFound:
+            return None

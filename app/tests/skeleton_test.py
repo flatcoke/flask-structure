@@ -1,10 +1,11 @@
 # -*-coding:utf-8-*-
 import unittest
-from app import app, db
+from app import create_app, db
 
 
 class TestCase(unittest.TestCase):
     def setUp(self):
+        app = create_app('testing')
         self.client = app.test_client()
         db.create_all()
 
