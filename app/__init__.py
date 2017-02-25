@@ -1,7 +1,8 @@
 import os
+
+from config import config
 from flask import Flask, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
-from config import config
 
 db = SQLAlchemy()
 

@@ -1,7 +1,8 @@
 # -*-coding:utf-8-*-
-from flask import Blueprint, request, render_template, flash, session, \
-    redirect, url_for
+from flask import (Blueprint, flash, redirect, render_template, request,
+                   session, url_for)
 from werkzeug.security import check_password_hash
+
 from app import db
 from app.mod_auth.forms import SigninForm, SignupForm
 from app.mod_auth.models import User

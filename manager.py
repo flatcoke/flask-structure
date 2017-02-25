@@ -3,9 +3,10 @@
 import os
 import unittest
 
-from app import create_app, db
-from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
+from flask.ext.script import Manager
+
+from app import create_app, db
 
 app = create_app(os.environ.get("FLATCOKE") or 'development')
 manager = Manager(app)

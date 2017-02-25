@@ -1,5 +1,6 @@
 # -*-coding:utf-8-*-
 import unittest
+
 from app import create_app, db
 
 

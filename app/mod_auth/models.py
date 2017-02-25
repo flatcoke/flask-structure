@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
-from app import db
-from werkzeug.security import check_password_hash, generate_password_hash
 from sqlalchemy.orm.exc import NoResultFound
+from werkzeug.security import check_password_hash, generate_password_hash
+
+from app import db
 
 
 class UserBase(db.Model):
