@@ -21,10 +21,10 @@ class Config(object):
 
     # Use a secure, unique and absolutely secret key for
     # signing the data.
-    CSRF_SESSION_KEY = "secret"
+    CSRF_SESSION_KEY = os.getenv('CSRF_SESSION_KEY')
 
     # Secret key for signing cookies
-    SECRET_KEY = "secret"
+    SECRET_KEY = os.getenv('SECRET_KEY')
 
     @staticmethod
     def init_app(app):
