@@ -8,6 +8,7 @@ from flask.ext.script import Manager
 
 from app import create_app, db
 
+
 if os.path.exists('.env'):
     print('Importing environment from .env file')
     for line in open('.env'):
