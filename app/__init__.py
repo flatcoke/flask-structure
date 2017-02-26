@@ -23,7 +23,6 @@ def create_app(config_name):
     #      return render_template('error/500.html'), 500
 
     # Import a module / component using its blueprint handler variable
-    # (mod_auth)
     from app.mod_auth.controllers import mod as auth_module
     from app.forc.controllers import mod as forc_module
 
@@ -31,9 +30,5 @@ def create_app(config_name):
     # app.register_blueprint(xyz_module)
     app.register_blueprint(auth_module)
     app.register_blueprint(forc_module)
-    # ..
-
-    # Build the database:
-    # This will create the database file using SQLAlchemy
 
     return app

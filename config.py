@@ -1,13 +1,10 @@
 import os
 
+# Define the application directory
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+
 
 class Config(object):
-    # Define the application directory
-    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-
-    # Define the database - we are working with
-    # SQLite for this example
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
     DATABASE_CONNECT_OPTIONS = {}
 
     # Turn off Flask-SQLAlchemy event system
@@ -39,15 +36,17 @@ class ProductionConfig(Config):
 
 
 class DevelopmentConfig(Config):
-    # Statement for enabling the development environment
+    """Statement for enabling the development environment"""
+    # Define the database - we are working with
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
     DEBUG = True
 
 
 class TestingConfig(Config):
     TESTING = True
     WTF_CSRF_ENABLED = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
-        os.path.join(Config.BASE_DIR, 'test.db')
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'test.db')
 
 
 config = {

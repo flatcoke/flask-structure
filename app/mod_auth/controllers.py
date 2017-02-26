@@ -22,7 +22,7 @@ def signin():
                 session['username'] = user.username
                 session['email'] = user.email
                 flash('Welcome %s' % user.username)
-                return redirect(url_for('home'))
+                return redirect(url_for('forc.index'))
             flash('Wrong email or password', 'error-message')
 
     return render_template("/auth/signin.html", form=form)
@@ -35,15 +35,14 @@ def signup():
     if request.method == 'POST':
         if not form.validate_on_submit:
             return render_template('/auth/signup.html', form=form), 406
-        else:
-            user = User(username=form.username.data,
-                        name=form.name.data,
-                        email=form.email.data,
-                        password=form.password.data)
-            db.session.add(user)
-            db.session.commit()
+        user = User(username=form.username.data,
+                    name=form.name.data,
+                    email=form.email.data,
+                    password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
 
-            return "sign in the user and redirect to Home"  # TODO
+        return "sign in the user and redirect to Home"  # TODO
 
     elif request.method == 'GET':
         return render_template('/auth/signup.html', form=form)
