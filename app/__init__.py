@@ -3,11 +3,11 @@ import os
 from config import config
 from flask import Flask, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.mail import Mail
+from flask.ext.sendgrid import SendGrid
 
 
 db = SQLAlchemy()
-mail = Mail()
+mail = SendGrid()
 
 
 def create_app(config_name):

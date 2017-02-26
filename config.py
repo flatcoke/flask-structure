@@ -29,6 +29,10 @@ class Config(object):
     else:
         SECRET_KEY = 'SECRET'
 
+    # for email with sendgrid
+    SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
+    SENDGRID_DEFAULT_FROM = 'admin@yourdomain.com'
+
     @staticmethod
     def init_app(app):
         pass
