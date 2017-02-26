@@ -1,7 +1,7 @@
 # -*-coding:utf-8-*-
 import unittest
 
-from app import create_app, db
+from .. import create_app, db
 
 
 class TestCase(unittest.TestCase):

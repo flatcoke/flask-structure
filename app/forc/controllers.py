@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, url_for
 
-from app import db
-from app.mod_auth.models import User
+from .. import db
+from ..mod_auth.models import User
 
 mod = Blueprint('forc', __name__, url_prefix='/forc')
 
