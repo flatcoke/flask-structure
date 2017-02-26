@@ -24,7 +24,10 @@ class Config(object):
     CSRF_SESSION_KEY = os.getenv('CSRF_SESSION_KEY')
 
     # Secret key for signing cookies
-    SECRET_KEY = os.getenv('SECRET_KEY')
+    if os.environ.get('SECRET_KEY'):
+        SECRET_KEY = os.environ.get('SECRET_KEY')
+    else:
+        SECRET_KEY = 'SECRET'
 
     @staticmethod
     def init_app(app):
