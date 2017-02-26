@@ -3,8 +3,11 @@ import os
 from config import config
 from flask import Flask, render_template
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.mail import Mail
+
 
 db = SQLAlchemy()
+mail = Mail()
 
 
 def create_app(config_name):
@@ -12,6 +15,7 @@ def create_app(config_name):
     app.config.from_object(config[config_name])
 
     db.init_app(app)
+    mail.init_app(app)
 
     #  # HTTP error handling
     #  @app.errorhandler(404)

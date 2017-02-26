@@ -1,7 +1,9 @@
 alembic==0.8.10
 appdirs==1.4.2
+blinker==1.4
 dominate==2.2.0
 Flask==0.10.1
+Flask-Mail==0.9.1
 Flask-Migrate==2.0.3
 Flask-Script==2.0.5
 Flask-SQLAlchemy==2.1
