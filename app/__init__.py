@@ -1,13 +1,15 @@
 import os
 
-from config import config
 from flask import Flask, render_template
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.sendgrid import SendGrid
+from flask_sendgrid import SendGrid
+from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import CsrfProtect
 
+from config import config
 
 db = SQLAlchemy()
 mail = SendGrid()
+csrf = CsrfProtect()
 
 
 def create_app(config_name):
@@ -16,6 +18,7 @@ def create_app(config_name):
 
     db.init_app(app)
     mail.init_app(app)
+    csrf.init_app(app)
 
     #  # HTTP error handling
     #  @app.errorhandler(404)

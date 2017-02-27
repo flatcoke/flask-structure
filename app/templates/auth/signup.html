@@ -1,4 +1,30 @@
+{% macro render_field(field, placeholder=None) %}
+{% endmacro %}
 {% include "header.html" %}
-<div class="wrapper">
-</div>
+{% block stylesheet %}
+{% endblock %}
+
+{% block body %}
+    <form method="POST" action="." accept-charset="UTF-8" role="form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <div>
+            <input type="text" name="username">
+        </div>
+        <div>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <input type="email" name="email">
+        </div>
+        <div>
+            <input type="password" name="confirm">
+        </div>
+        <div>
+            <input type="password" name="password">
+        </div>
+        <div>
+            <button type="submit">register now</button>
+        </div>
+    </form>
+{% endblock %}
 {% include "footer.html" %}
