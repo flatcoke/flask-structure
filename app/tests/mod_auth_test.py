@@ -1,8 +1,8 @@
 # -*-coding:utf-8-*-
 import unittest
 
-from .. import create_app, db
-from ..mod_auth.models import User
+from app import create_app, db
+from app.mod_auth.models import User
 
 
 class TestCase(unittest.TestCase):

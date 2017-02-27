@@ -2,7 +2,7 @@
 from sqlalchemy.orm.exc import NoResultFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from .. import db
+from app import db
 
 
 class UserBase(db.Model):

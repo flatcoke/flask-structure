@@ -27,8 +27,8 @@ def create_app(config_name):
     #      return render_template('error/500.html'), 500
 
     # Import a module / component using its blueprint handler variable
-    from .mod_auth.controllers import mod as auth_module
-    from .forc.controllers import mod as forc_module
+    from app.mod_auth.controllers import mod as auth_module
+    from app.forc.controllers import mod as forc_module
 
     # Register blueprint(s)
     # app.register_blueprint(xyz_module)
