@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+from flask_login import UserMixin
 from sqlalchemy.orm.exc import NoResultFound
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -19,7 +20,7 @@ class UserBase(db.Model):
                               onupdate=db.func.current_timestamp())
 
 
-class User(UserBase):
+class User(UserBase, UserMixin):
     __tablename__ = 'user'
 
     username = db.Column(db.String(50), nullable=False)

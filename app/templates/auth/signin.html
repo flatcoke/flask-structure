@@ -1,4 +1,19 @@
 {% include "header.html" %}
 <div class="wrapper">
+    <form method="POST" action="." accept-charset="UTF-8" role="form">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <div>
+            <input type="email" name="email"> email 
+        </div>
+        <div>
+            <input type="password" name="password"> password
+        </div>
+        <div>
+            <input type="checkbox"> Remember me
+        </div>
+        <div>
+            <input type="submit" value="login">
+        </div>
+    </form>
 </div>
 {% include "footer.html" %}

@@ -1,6 +1,7 @@
 # -*-coding:utf-8-*-
 from flask import (Blueprint, flash, redirect, render_template, request,
                    session, url_for)
+from flask_login import login_user, logout_user, login_required
 from werkzeug.security import check_password_hash
 
 from app import db
@@ -22,13 +23,21 @@ def signin():
                 session['username'] = user.username
                 session['email'] = user.email
                 flash('Welcome %s' % user.username)
+                login_user(user)
                 return redirect(url_for('forc.index'))
             flash('Wrong email or password', 'error-message')
 
     return render_template("/auth/signin.html", form=form)
 
 
-@mod.route('/signup/', methods=['GET', 'POST'])
+@mod.route('/signout', methods=['GET'])
+@login_required
+def signout():
+    logout_user()
+    return redirect(url_for('auth.signin'))
+
+
+@mod.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()
 

@@ -11,7 +11,11 @@ from config import config
 db = SQLAlchemy()
 mail = SendGrid()
 csrf = CsrfProtect()
+
+# Set up Flask-login
 login_manager = LoginManager()
+login_manager.session_protection = 'strong'
+login_manager.login_view = 'auth.signin'
 
 
 def create_app(config_name):
