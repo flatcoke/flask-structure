@@ -11,7 +11,7 @@ from config import config
 db = SQLAlchemy()
 mail = SendGrid()
 csrf = CsrfProtect()
-login = LoginManager()
+login_manager = LoginManager()
 
 
 def create_app(config_name):
@@ -21,7 +21,7 @@ def create_app(config_name):
     db.init_app(app)
     mail.init_app(app)
     csrf.init_app(app)
-    login.init_app(app)
+    login_manager.init_app(app)
 
     #  # HTTP error handling
     #  @app.errorhandler(404)
@@ -33,7 +33,7 @@ def create_app(config_name):
     #      return render_template('error/500.html'), 500
 
     # Import a module / component using its blueprint handler variable
-    from app.mod_auth.controllers import mod as auth_module
+    from app.auth.controllers import mod as auth_module
     from app.forc.controllers import mod as forc_module
 
     # Register blueprint(s)

@@ -4,8 +4,8 @@ from flask import (Blueprint, flash, redirect, render_template, request,
 from werkzeug.security import check_password_hash
 
 from app import db
-from app.mod_auth.forms import SigninForm, SignupForm
-from app.mod_auth.models import User
+from app.auth.forms import SigninForm, SignupForm
+from app.auth.models import User
 
 mod = Blueprint('auth', __name__, url_prefix='/auth')
 

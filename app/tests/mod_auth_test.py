@@ -2,7 +2,7 @@
 import unittest
 
 from app import create_app, db
-from app.mod_auth.models import User
+from app.auth.models import User
 
 
 class TestCase(unittest.TestCase):
