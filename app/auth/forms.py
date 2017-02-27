@@ -37,7 +37,6 @@ class SignupForm(Form):
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
 
-    @property
     def validate_on_submit(self):
         """
 

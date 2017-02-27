@@ -33,7 +33,7 @@ def signup():
     form = SignupForm()
 
     if request.method == 'POST':
-        if not form.validate_on_submit:
+        if not form.validate_on_submit():
             return render_template('/auth/signup.html', form=form), 406
         user = User(username=form.username.data,
                     name=form.name.data,
