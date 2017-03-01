@@ -11,7 +11,7 @@ from app.auth.models import User
 mod = Blueprint('auth', __name__, url_prefix='/auth')
 
 
-@mod.route('/signin/', methods=['GET', 'POST'])
+@mod.route('/signin', methods=['GET', 'POST'])
 def signin():
     # If sign in form is submitted
     form = SigninForm()

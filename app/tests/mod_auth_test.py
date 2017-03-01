@@ -44,7 +44,7 @@ class TestCase(unittest.TestCase):
             self.assertNotEqual(result.password, i['password'])
 
     def post_signup(self, data):
-        url = '/auth/signup/'
+        url = '/auth/signup'
 
         return self.client.post(url,
                                 data=data,
@@ -94,7 +94,7 @@ class TestCase(unittest.TestCase):
             self.assertEqual(rv.status_code, 406)
 
     def test_sign_in(self):
-        url = '/auth/signin/'
+        url = '/auth/signin'
         test_list = [
             dict(username='flatcoke', password='qwer1235', confirm='qwer1235',
                  email='flatcoke89@gmail.com', name='TaeminKim', ),
