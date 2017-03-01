@@ -39,7 +39,7 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
 
 
 class DevelopmentConfig(Config):
