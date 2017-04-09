@@ -1,9 +1,10 @@
 # -*-coding:utf-8-*-
 from flask import (Blueprint, flash, redirect, render_template, request,
                    session, url_for)
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_required, login_user, logout_user
 from werkzeug.security import check_password_hash
 
+import app.auth.api
 from app import db
 from app.auth.forms import SigninForm, SignupForm
 from app.auth.models import User
@@ -55,3 +56,9 @@ def signup():
 
     elif request.method == 'GET':
         return render_template('/auth/signup.html', form=form)
+
+
+@mod.route('/<id>', methods=['GET'])
+def get_user(id):
+    result = User.query.get(id)
+    return result.username
