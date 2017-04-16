@@ -7,6 +7,8 @@ RUN apt-get install -y supervisor
 RUN pip install uwsgi
 
 RUN mkdir -p /deploy/flatcoke
+RUN mkdir -p /deploy/log/uwsgi
+
 ADD . /deploy/flatcoke/
 WORKDIR /deploy/flatcoke
 
