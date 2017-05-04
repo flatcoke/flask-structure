@@ -3,7 +3,6 @@ import os
 from flasgger import Swagger
 from flask import Flask, render_template
 from flask_login import LoginManager
-from flask_restful import Api
 from flask_sendgrid import SendGrid
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import CsrfProtect
@@ -19,10 +18,10 @@ login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.signin'
 swagger = Swagger()
-api = Api()
 
 
 def create_app(config_name):
+    '''For to use dynamic environment'''
     app = Flask(__name__)
     app.config.from_object(config[config_name])
 
@@ -49,9 +48,5 @@ def create_app(config_name):
     # app.register_blueprint(xyz_module)
     app.register_blueprint(auth_module)
     app.register_blueprint(forc_module)
-
-    # after make all of api docs
-    # api.decorators = [csrf.exempt]
-    api.init_app(app)
 
     return app

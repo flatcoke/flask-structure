@@ -4,7 +4,6 @@ from flask import (Blueprint, flash, redirect, render_template, request,
 from flask_login import login_required, login_user, logout_user
 from werkzeug.security import check_password_hash
 
-import app.auth.api
 from app import db
 from app.auth.forms import SigninForm, SignupForm
 from app.auth.models import User
