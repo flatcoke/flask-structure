@@ -28,7 +28,7 @@ manager.add_command('db', MigrateCommand)
 @manager.command
 def hello():
     """say hello for testing"""
-    print ('hello')
+    print('hello')
 
 
 @manager.command

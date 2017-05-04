@@ -1,6 +1,5 @@
 import os
 
-from flasgger import Swagger
 from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_sendgrid import SendGrid
@@ -17,7 +16,6 @@ csrf = CsrfProtect()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.signin'
-swagger = Swagger()
 
 
 def create_app(config_name):
@@ -29,7 +27,6 @@ def create_app(config_name):
     mail.init_app(app)
     csrf.init_app(app)
     login_manager.init_app(app)
-    swagger.init_app(app)
 
     #  # HTTP error handling
     #  @app.errorhandler(404)
