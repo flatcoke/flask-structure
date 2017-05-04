@@ -1,5 +1,6 @@
 import os
 
+from flasgger import Swagger
 from flask import Flask, render_template
 from flask_login import LoginManager
 from flask_sendgrid import SendGrid
@@ -27,6 +28,22 @@ def create_app(config_name):
     mail.init_app(app)
     csrf.init_app(app)
     login_manager.init_app(app)
+
+    api_config = {
+        "headers": [
+        ],
+        "specs": [
+            {
+                "endpoint": 'apispec',
+                "route": '/apispec.json',
+                "rule_filter": lambda rule: True,  # all in
+                "model_filter": lambda tag: True,  # all in
+            }
+        ],
+        "static_url_path": "/flasgger_static",
+        "specs_route": "/" if config_name == 'api' else '/api/'
+    }
+    Swagger(app, config=api_config)
 
     #  # HTTP error handling
     #  @app.errorhandler(404)

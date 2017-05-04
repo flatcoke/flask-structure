@@ -1,4 +1,5 @@
 # -*-coding:utf-8-*-
+from flasgger import swag_from
 from flask import (Blueprint, flash, redirect, render_template, request,
                    session, url_for)
 from flask_login import login_required, login_user, logout_user
@@ -7,6 +8,8 @@ from werkzeug.security import check_password_hash
 from app import db
 from app.auth.forms import SigninForm, SignupForm
 from app.auth.models import User
+
+from .apis import *
 
 mod = Blueprint('auth', __name__, url_prefix='/auth')
 
@@ -38,6 +41,7 @@ def signout():
 
 
 @mod.route('/signup', methods=['GET', 'POST'])
+@swag_from(signup_spec)
 def signup():
     form = SignupForm()
 

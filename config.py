@@ -45,8 +45,15 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     """Statement for enabling the development environment"""
     # Define the database - we are working with
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'app.db')
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'dev.db')
     DEBUG = True
+
+
+class APIConfig(Config):
+    """Statement for enabling the api environment"""
+    # Define the database - we are working with
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'dev.db')
+    WTF_CSRF_ENABLED = False
 
 
 class TestingConfig(Config):
@@ -60,4 +67,5 @@ config = {
     'development': DevelopmentConfig,
     'testing': TestingConfig,
     'production': ProductionConfig,
+    'api': APIConfig,
 }

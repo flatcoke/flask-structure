@@ -5,9 +5,10 @@ import unittest
 
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask.ext.script import Manager
+from werkzeug.serving import run_simple
+from werkzeug.wsgi import DispatcherMiddleware
 
 from app import create_app, db
-
 
 if os.path.exists('.env'):
     print('Importing environment from .env file')
@@ -17,11 +18,16 @@ if os.path.exists('.env'):
             os.environ[var[0]] = var[1]
 
 
-app = create_app(os.environ.get("FLATCOKE") or 'development')
+if os.environ.get('FLATCOKE') == 'production':
+    app = DispatcherMiddleware(create_app(os.environ.get("FLATCOKE")), {
+        '/api': create_app('api')
+    })
+else:
+    app = create_app(os.environ.get("FLATCOKE") or 'development')
+
+
 manager = Manager(app)
 migrate = Migrate(app, db)
-
-
 manager.add_command('db', MigrateCommand)
 
 
@@ -56,4 +62,8 @@ def dev():
 
 
 if __name__ == '__main__':
+    if os.environ.get('FLATCOKE') == 'production':
+        run_simple('0.0.0.0', 5000, app,
+                   use_reloader=False, use_debugger=False,
+                   )
     manager.run()

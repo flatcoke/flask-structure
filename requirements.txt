@@ -1,6 +1,7 @@
 alembic==0.8.10
 appdirs==1.4.2
 dominate==2.2.0
+flasgger==0.6.3
 Flask==0.10.1
 Flask-Login==0.4.0
 Flask-Migrate==2.0.3
@@ -10,12 +11,15 @@ Flask-SQLAlchemy==2.1
 Flask-WTF==0.12
 itsdangerous==0.24
 Jinja2==2.8
+jsonschema==2.6.0
 Mako==1.0.6
 MarkupSafe==0.23
+mistune==0.7.4
 packaging==16.8
 pyparsing==2.1.10
 python-editor==1.0.3
 python-http-client==2.2.1
+PyYAML==3.12
 sendgrid==3.6.3
 six==1.10.0
 SQLAlchemy==1.0.12
