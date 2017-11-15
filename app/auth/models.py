@@ -11,24 +11,24 @@ def load_user(user_id):
     return User.query.get(int(user_id))
 
 
-class UserBase(db.Model):
-    __abstract__ = True
-
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                              onupdate=db.func.current_timestamp())
-
-
-class User(UserBase, UserMixin):
+class User(db.Model, UserMixin):
     __tablename__ = 'user'
 
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(50), nullable=False)
     name = db.Column(db.String(128), nullable=False)
     email = db.Column(db.String(128), nullable=False, unique=True)
     password = db.Column(db.String(54), nullable=False)
     level = db.Column(db.Integer, nullable=False, default=10)
     active = db.Column(db.SmallInteger, nullable=False, default=True)
+    address = db.relationship('Address',
+                              foreign_keys='User.id',
+                              primaryjoin='User.id == Address.user_id',
+                              lazy='joined'
+                              )
+
+    created_at = db.Column(db.DateTime, default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
     def __init__(self, username, name, email, password):
         self.username = username
@@ -56,3 +56,14 @@ class User(UserBase, UserMixin):
             return User.query.filter_by(id=user_id).one()
         except NoResultFound:
             return None
+
+
+class Address(db.Model):
+    __tablename__ = 'address'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    user_id = db.Column(db.Integer, nullable=False)
+    address = db.Column(db.String(20), nullable=False)
+
+    created_at = db.Column(db.DateTime, default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
