@@ -1,9 +1,10 @@
 import time
 
 from flask import Blueprint, render_template
+from flask import current_app
 from sqlalchemy import event
-from sqlalchemy.orm import joinedload
 from sqlalchemy.engine import Engine
+from sqlalchemy.orm import joinedload
 
 from app import db
 from .models import User, Address
@@ -14,7 +15,8 @@ mod = Blueprint('users', __name__, url_prefix='/users')
 @event.listens_for(Engine, "before_cursor_execute")
 def before_cursor_execute(conn, cursor, statement,
                           parameters, context, executemany):
-    print(statement, parameters)
+    if not current_app.config['TESTING']:
+        print(statement, parameters)
     conn.info.setdefault('query_start_time', []).append(time.time())
 
 
@@ -22,7 +24,8 @@ def before_cursor_execute(conn, cursor, statement,
 def after_cursor_execute(conn, cursor, statement,
                          parameters, context, executemany):
     total = time.time() - conn.info['query_start_time'].pop(-1)
-    print(total)
+    if not current_app.config['TESTING']:
+        print(total)
 
 
 @mod.route('/seed', methods=['GET'])

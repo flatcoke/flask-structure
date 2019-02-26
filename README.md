@@ -16,6 +16,7 @@ $ pip install -r requirements.txt
 
 ``` sh
 $ python manager.py upgrade
+$ python manager.py test
 $ python manager.py runserver 
 ```
 
