@@ -2,7 +2,7 @@
 import unittest
 
 from app import create_app, db
-from app.auth.models import User
+from app.users.models import User
 
 
 class TestCase(unittest.TestCase):
@@ -26,9 +26,9 @@ class TestCase(unittest.TestCase):
             dict(username='c121213', password='12341234',
                  email='c121213@naver.com', name='Kevin', ),
             dict(username='gogogohaha', password='asdfasdf',
-                 email='flatcoke@naver.com', name='Min', ),
+                 email='flatcoke@naver.com', name='TaeMin', ),
             dict(username='taemin-kim', password='googoo',
-                 email='taeminkim98@gmail.com', name='Le', ),
+                 email='taeminkim98@gmail.com', name='Noah', ),
             dict(username='11good', password='1',
                  email='c121213@nate.com', name='flatcoke', ),
         ]
@@ -57,9 +57,9 @@ class TestCase(unittest.TestCase):
             dict(username='c121213', password='12341234', confirm='12341234',
                  email='c121213@naver.com', name='Kevin', ),
             dict(username='gogogohaha', password='asdfasdf', confirm='asdfasdf',
-                 email='flatcoke@naver.com', name='Min', ),
+                 email='flatcoke@naver.com', name='TaeMin', ),
             dict(username='taemin-kim', password='gogogo', confirm='gogogo',
-                 email='taeminkim98@gmail.com', name='Le', ),
+                 email='taeminkim98@gmail.com', name='TM', ),
         ]
 
         # normal case
@@ -101,9 +101,9 @@ class TestCase(unittest.TestCase):
             dict(username='c121213', password='12341234', confirm='12341234',
                  email='c121213@naver.com', name='Kevin', ),
             dict(username='gogogohaha', password='asdfasdf', confirm='asdfasdf',
-                 email='flatcoke@naver.com', name='Min', ),
+                 email='flatcoke@naver.com', name='TaeMin', ),
             dict(username='taemin-kim', password='gogogo', confirm='gogogo',
-                 email='taeminkim98@gmail.com', name='Le', ),
+                 email='taeminkim98@gmail.com', name='Lee', ),
         ]
         # sing up before test
         for item in test_list:
@@ -116,13 +116,13 @@ class TestCase(unittest.TestCase):
                                   follow_redirects=True)
             self.assertEqual(rv.status_code, 200)
 
-            # session 값, 성공 메세지 체크
+            # session 값, check success message
             with self.client.session_transaction() as session:
                 self.assertEqual(session['username'], item['username'])
                 flash = dict(session.pop('_flashes'))
                 self.assertEqual(flash['message'],
                                  'Welcome %s' % item['username'])
-                # TODO ('key': 'value') 로 session check
+                # TODO ('key': 'value') check session
 
             user = User.query.filter_by(username=item['username']).first()
             self.assertEqual(user.username, item['username'])
