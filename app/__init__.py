@@ -1,7 +1,5 @@
-import os
-
 from flasgger import Swagger
-from flask import Flask, render_template
+from flask import Flask
 from flask_login import LoginManager
 from flask_sendgrid import SendGrid
 from flask_sqlalchemy import SQLAlchemy
@@ -20,7 +18,7 @@ login_manager.login_view = 'auth.signin'
 
 
 def create_app(config_name):
-    '''For to use dynamic environment'''
+    """For to use dynamic environment"""
     app = Flask(__name__)
     app.config.from_object(config[config_name])
 
@@ -56,11 +54,11 @@ def create_app(config_name):
 
     # Import a module / component using its blueprint handler variable
     from app.auth.controllers import mod as auth_module
-    from app.forc.controllers import mod as forc_module
+    from app.users.controllers import mod as user_module
 
     # Register blueprint(s)
     # app.register_blueprint(xyz_module)
     app.register_blueprint(auth_module)
-    app.register_blueprint(forc_module)
+    app.register_blueprint(user_module)
 
     return app
