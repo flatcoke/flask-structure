@@ -13,3 +13,14 @@ $ . env/bin/activate
 $ pip install -r requirements.txt
 ```
 =======
+
+``` sh
+$ python manager.py upgrade
+```
+
+`localhost:5000/users/seed`
+
+`localhost:5000/users`
+
+`localhost:5000/users/1`
+
