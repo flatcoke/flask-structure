@@ -3,8 +3,8 @@
 import os
 import unittest
 
-from flask.ext.migrate import Migrate, MigrateCommand
-from flask.ext.script import Manager
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
 from werkzeug.serving import run_simple
 from werkzeug.wsgi import DispatcherMiddleware
 
@@ -17,14 +17,12 @@ if os.path.exists('.env'):
         if len(var) == 2:
             os.environ[var[0]] = var[1]
 
-
 if os.environ.get('FLATCOKE') == 'production':
     app = DispatcherMiddleware(create_app(os.environ.get("FLATCOKE")), {
         '/api': create_app('api')
     })
 else:
     app = create_app(os.environ.get("FLATCOKE") or 'development')
-
 
 manager = Manager(app)
 migrate = Migrate(app, db)
