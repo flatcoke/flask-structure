@@ -3,15 +3,15 @@
     <div class="content">
         <div class="container">
             <!-- CONTAINER -->
-            Hi My name is Taemin Kim
+            This is the user
+            id: {{ user.id }}
+            username: {{ user.username }}
+            first address: {{ user.addresses[0].address }}
         </div>
     </div>
 {% endblock %}
 {% block javascript %}
     <script>
-        function test() {
-            console.log('taemin')
-        }
     </script>
 {% endblock %}
 {% include "footer.html" %}

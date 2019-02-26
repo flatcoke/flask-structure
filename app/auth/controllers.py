@@ -7,8 +7,7 @@ from werkzeug.security import check_password_hash
 
 from app import db
 from app.auth.forms import SigninForm, SignupForm
-from app.auth.models import User
-
+from app.users.models import User
 from .apis import *
 
 mod = Blueprint('auth', __name__, url_prefix='/auth')
@@ -27,7 +26,7 @@ def signin():
                 session['email'] = user.email
                 flash('Welcome %s' % user.username)
                 login_user(user)
-                return redirect(url_for('forc.index'))
+                return redirect(url_for('users.index'))
             flash('Wrong email or password', 'error-message')
 
     return render_template("/auth/signin.html", form=form)

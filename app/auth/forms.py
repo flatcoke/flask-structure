@@ -3,11 +3,11 @@ from flask_wtf import Form
 from wtforms import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo
 
-from app.auth.models import User
+from app.users.models import User
 
 
 class SigninForm(Form):
-    """ 로그인 폼 """
+    """ login form"""
 
     email = StringField(
         'Email Address',
