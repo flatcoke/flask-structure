@@ -47,6 +47,26 @@ def recreate_db():
 
 
 @manager.command
+def seed():
+    from app.users.models import User, Address
+    from faker import Faker
+    fake = Faker()
+    users = [User(username=fake.user_name(), name=fake.name(),
+                  email=fake.email(), password='qwer1234') for i in range(20)]
+    db.session.add_all(users)
+    db.session.commit()
+
+    addresses = []
+    for user in users:
+        address = Address()
+        address.user = user
+        address.address = fake.address()
+        addresses.append(address)
+    db.session.add_all(addresses)
+    db.session.commit()
+
+
+@manager.command
 def test():
     """Run unit tests."""
     tests = unittest.TestLoader().discover('app.tests', pattern='*.py')

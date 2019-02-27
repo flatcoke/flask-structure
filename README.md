@@ -17,10 +17,9 @@ $ pip install -r requirements.txt
 ``` sh
 $ python manager.py upgrade
 $ python manager.py test
-$ python manager.py runserver 
+$ python manager.py seed
+$ python manager.py runserver
 ```
-
-`localhost:5000/users/seed`
 
 `localhost:5000/users`
 

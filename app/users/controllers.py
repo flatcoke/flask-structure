@@ -28,27 +28,6 @@ def after_cursor_execute(conn, cursor, statement,
         print(total)
 
 
-@mod.route('/seed', methods=['GET'])
-def seed():
-    from faker import Faker
-    fake = Faker()
-    users = [User(username=fake.user_name(), name=fake.name(),
-                  email=fake.email(), password='qwer1234') for i in range(20)]
-    db.session.add_all(users)
-    db.session.commit()
-
-    addresses = []
-    for user in users:
-        address = Address()
-        address.user = user
-        address.address = fake.address()
-        addresses.append(address)
-    db.session.add_all(addresses)
-    db.session.commit()
-
-    return 'success'
-
-
 @mod.route('/', methods=['GET'])
 def index():
     users = User.query.options(joinedload('addresses')).all()
