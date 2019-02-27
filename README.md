@@ -6,7 +6,6 @@
 >https://www.digitalocean.com/community/tutorials/how-to-structure-large-flask-applications
 
 ## To setup dev environment
-
 ```sh
 $ virtualenv env
 $ . env/bin/activate
@@ -14,9 +13,14 @@ $ pip install -r requirements.txt
 ```
 =======
 
+## Test
+```sh
+$ python manager.py test
+```
+
+## Run
 ``` sh
 $ python manager.py upgrade
-$ python manager.py test
 $ python manager.py seed
 $ python manager.py runserver
 ```
